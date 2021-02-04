@@ -65,6 +65,9 @@
         },
         {
           "text": "%livy.sparkr\n\n# SparkR over Livy\ndf \u003c- as.DataFrame(list(\"One\", \"Two\", \"Three\", \"Four\"), \"This is as example\")\nhead(df)"
+        },
+        {
+          "text": "%livy.sql\nSELECT 1, CONCAT(\u0027This is\u0027, \u0027 a test\u0027)"
         }
       ],
   "name": "test",
