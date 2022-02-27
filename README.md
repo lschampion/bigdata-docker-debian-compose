@@ -1,4 +1,4 @@
-# Big data playground: Cluster with Hadoop, Hive, Spark, Zeppelin and Livy via Docker-compose.
+# Big data playground: Cluster with Hadoop, Hive, Spark, HBase, Zeppelin and Livy via Docker-compose.
 
 I wanted to have the ability to play around with various big data
 applications as effortlessly as possible,
@@ -8,34 +8,27 @@ in one command. This is how this repository came to be!
 
 ## Constituent images:
 
-[Base image](https://github.com/panovvv/hadoop-hive-spark-docker):
-[![Docker Build Status: Base image](https://img.shields.io/docker/cloud/build/panovvv/hadoop-hive-spark.svg)](https://cloud.docker.com/repository/docker/panovvv/hadoop-hive-spark/builds)
-[![Docker Pulls: Base image](https://img.shields.io/docker/pulls/panovvv/hadoop-hive-spark.svg)](https://hub.docker.com/r/panovvv/hadoop-hive-spark)
-[![Docker Stars: Base image](https://img.shields.io/docker/stars/panovvv/hadoop-hive-spark.svg)](https://hub.docker.com/r/panovvv/hadoop-hive-spark)
+fork from panovvv`s project,and add hbase service 
 
-[Zeppelin image](https://github.com/panovvv/zeppelin-bigdata-docker): [![Docker Build Status: Zeppelin](https://img.shields.io/docker/cloud/build/panovvv/zeppelin-bigdata.svg)](https://cloud.docker.com/repository/docker/panovvv/zeppelin-bigdata/builds)
-[![Docker Pulls: Zeppelin](https://img.shields.io/docker/pulls/panovvv/zeppelin-bigdata.svg)](https://hub.docker.com/r/panovvv/zeppelin-bigdata)
-[![Docker Stars: Zeppelin](https://img.shields.io/docker/stars/panovvv/zeppelin-bigdata.svg)](https://hub.docker.com/r/panovvv/zeppelin-bigdata)
+panovvv project url: https://github.com/panovvv/bigdata-docker-compose.git
 
-[Livy image](https://github.com/panovvv/livy-docker): [![Docker Build Status: Livy](https://img.shields.io/docker/cloud/build/panovvv/livy.svg)](https://cloud.docker.com/repository/docker/panovvv/livy/builds)
-[![Docker Pulls: Livy](https://img.shields.io/docker/pulls/panovvv/livy.svg)](https://hub.docker.com/r/panovvv/livy)
-[![Docker Stars: Livy](https://img.shields.io/docker/stars/panovvv/livy.svg)](https://hub.docker.com/r/panovvv/livy)
 
 ## Usage
 
 Clone:
 ```bash
-git clone https://github.com/panovvv/bigdata-docker-compose.git
+git clone https://github.com/lschampion/bigdata-docker-compose.git
 ```
 * On non-Linux platforms, you should dedicate more RAM to Docker than it does by default
-  (2Gb on my machine with 16Gb RAM). Otherwise applications (ResourceManager in my case)
+  (docker run in centos8.4 and centos run in vmare15 sharing 8GB ram 60GB disk all on my machine with 16Gb RAM).  It seems that 16GB RAM of machine is minimum. Otherwise applications (ResourceManager in my case)
   will quit sporadically and you'll see messages like this one in logs:
+  
   <pre>
   current-datetime INFO org.apache.hadoop.util.JvmPauseMonitor: Detected pause in JVM or host machine (eg GC): pause of approximately 1234ms
   No GCs detected
   </pre>
-  Increasing memory to 8G solved all those mysterious problems for me.
-
+Increasing memory to 8G solved all those mysterious problems for me.
+  
 * You should have more than 90% of free disk space, otherwise
   YARN will deem all nodes unhealthy.
 
@@ -61,11 +54,45 @@ Hive JDBC port is exposed to host:
 * User and password: unused.
 
 To shut the whole thing down, run this from the same folder:
+
+Use with caution in `docker-compose down` command, because it remove container beyond retrieve.
+
 ```bash
 docker-compose down
 ```
 
+check docker-compose logs：
+
+```shell
+# for all aggregated logs 
+docker-compose logs -f 
+# for specific service 
+docker-compose logs -f master
+# for interested content 
+docker-compose logs -f | grep your_interested_word
+```
+
+The logs of each component are synchronized to the data volume,please check dir ./logs
+
+```shell
+ll ./logs
+# total 12
+# drwxr-xr-x 3 root root 4096 Feb 27 23:12 hadoop
+# drwxr-xr-x 2 root root 4096 Feb 27 23:13 hbase
+# drwxr-xr-x 2 root root    6 Feb 27 13:32 hive
+# drwxr-xr-x 2 root root 4096 Feb 27 23:13 spark
+```
+
+after fist startup, please use start / stop /restart. 
+
+```
+docker-compose start
+docker-compose down
+docker-compose restart
+```
+
 ## Checking if everything plays well together
+
 You can quickly check everything by opening the
 [bundled Zeppelin notebook](http://localhost:8890)
 and running all paragraphs.
@@ -93,19 +120,25 @@ jps
 ```
 `jps` command outputs a list of running Java processes,
 which on Hadoop Namenode/Spark Master node should include those:
+
 <pre>
-123 Jps
-456 ResourceManager
-789 NameNode
-234 SecondaryNameNode
-567 HistoryServer
-890 Master
+433 ResourceManager
+2209 HMaster
+1685 Master
+358 SecondaryNameNode
+1687 HistoryServer
+520 JobHistoryServer
+297 NameNode
+894 RunJar
+2926 Jps
+895 RunJar
 </pre>
 
 ... but not necessarily in this order and those IDs,
 also some extras like `RunJar` and `JobHistoryServer` might be there too.
 
 Then let's see if YARN can see all resources we have (2 worker nodes):
+
 ```bash
 yarn node -list
 ```
@@ -140,7 +173,6 @@ Found N items
 -rw-r--r--   2 root supergroup  ... /grades.csv
 ...
 </pre>
-
 Ctrl+D out of master now. Repeat for remaining nodes
 (there's 3 total: master, worker1 and worker2):
 
@@ -152,19 +184,24 @@ hadoop fs -ls /
 Found 1 items
 -rw-r--r--   2 root supergroup  ... /grades.csv
 </pre>
-
 While we're on nodes other than Hadoop Namenode/Spark Master node,
 jps command output should include DataNode and Worker now instead of
 NameNode and Master:
+
 ```bash
+# on worker1 or worker2
+docker-compose exec worker2 bash
 jps
 ```
 <pre>
-123 Jps
-456 NodeManager
-789 DataNode
-234 Worker
+1008 HRegionServer
+1232 ThriftServer
+1633 Jps
+237 DataNode
+303 NodeManager
 </pre>
+
+ThriftServer may only be checked on worker2
 
 ### Hive
 
@@ -357,9 +394,8 @@ spark.sql('SELECT * FROM grades').show()
 ```
 <pre>
 1000000000
-
-$same_tables_as_above
 </pre>
+
 Ctrl+D out of PySpark.
 
 ```bash
@@ -378,10 +414,7 @@ head(df)
 2                Two
 3              Three
 4               Four
-
-$same_tables_as_above
 </pre>
-
 * Amazon S3
 
 From Hadoop:
@@ -702,7 +735,33 @@ Response:
 }
 ```
 
+
+
+### HBase
+
+Open up [HBase Master Web UI (localhost:16010)](http://localhost:16010/):
+
+```shell
+# cd docker compose root dir and access master using bash
+docker-compose exec master bash
+# hbase shell
+hbase shell
+# test hbase
+status 'summary'
+# create table
+create 'tbl_user', 'info', 'detail', 'address'
+# insert frist data
+put 'tbl_user', 'mengday', 'info:id', '1'
+put 'tbl_user', 'mengday', 'info:name', '张三'
+put 'tbl_user', 'mengday', 'info:age', '28'
+# scan table
+scan 'tbl_user'
+```
+
+ThriftServer is deloyed on worker2. python (etc APIs) may connect this service.
+
 ## Credits
+
 Sample data file:
 * __grades.csv__ is borrowed from 
 [John Burkardt's page](https://people.sc.fsu.edu/~jburkardt/data/csv/csv.html)

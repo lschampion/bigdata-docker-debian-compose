@@ -104,7 +104,7 @@ services:
       HADOOP_NODE: namenode
       HADOOP_SERVERS_HOSTNAME: master worker1 worker2
       HADOOP_NNAMENADE_HOSTNAME: master
-      HBASE_ROLE: hmaster
+      HBASE_NODE: hmaster
       HBASE_MASTER_HOSTNAME: master
       HBASE_REGIONSERVER_HOSTNAME: worker1 worker2
       HIVE_CONFIGURE: yes, please
@@ -137,11 +137,6 @@ services:
       - 16010:16010
     volumes:
       - ./data:/data
-      - data_share:/data_share
-      - ./logs/hadoop:/usr/hadoop/logs
-      - ./logs/hbase:/usr/hbase/logs
-      - ./logs/hive:/usr/hive/logs
-      - ./logs/spark:/usr/spark/logs
     networks:
       spark_net:
         ipv4_address: 172.28.1.1
@@ -162,10 +157,9 @@ services:
     depends_on:
       - hivemetastore
     environment:
-      HADOOP_NODE: datanode
       HADOOP_NNAMENADE_HOSTNAME: master
       HADOOP_SERVERS_HOSTNAME: master worker1 worker2
-      HBASE_ROLE: regionserver
+      HBASE_NODE: regionserver
       HBASE_MASTER_HOSTNAME: master
       HBASE_REGIONSERVER_HOSTNAME: worker1 worker2
       SPARK_MASTER_ADDRESS: spark://master:7077
@@ -175,6 +169,7 @@ services:
       SPARK_LOCAL_HOSTNAME: worker1
       SPARK_LOCAL_IP: 172.28.1.2
       SPARK_MASTER_HOST: 172.28.1.1
+      HADOOP_NODE: datanode
       HADOOP_DATANODE_UI_PORT: 9864
       SPARK_LOCAL_HOSTNAME: master
       ZOO_SERVERS_HOSTNAME:  zoo1 zoo2 zoo3
@@ -187,11 +182,6 @@ services:
       - 8081:8081
     volumes:
       - ./data:/data
-      - data_share:/data_share
-      - ./logs/hadoop:/usr/hadoop/logs
-      - ./logs/hbase:/usr/hbase/logs
-      - ./logs/hive:/usr/hive/logs
-      - ./logs/spark:/usr/spark/logs
     networks:
       spark_net:
         ipv4_address: 172.28.1.2
@@ -214,7 +204,8 @@ services:
     environment:
       HADOOP_NNAMENADE_HOSTNAME: master
       HADOOP_SERVERS_HOSTNAME: master worker1 worker2
-      HBASE_ROLE: regionserver thrift
+      HBASE_NODE: regionserver
+      HBASE_NODE_EXTRA: thrift
       HBASE_MASTER_HOSTNAME: master
       HBASE_REGIONSERVER_HOSTNAME: worker1 worker2
       SPARK_MASTER_ADDRESS: spark://master:7077
@@ -237,11 +228,6 @@ services:
       - 8082:8082
     volumes:
       - ./data:/data
-      - data_share:/data_share
-      - ./logs/hadoop:/usr/hadoop/logs
-      - ./logs/hbase:/usr/hbase/logs
-      - ./logs/hive:/usr/hive/logs
-      - ./logs/spark:/usr/spark/logs
     networks:
       spark_net:
         ipv4_address: 172.28.1.3
@@ -333,7 +319,3 @@ networks:
       driver: default
       config:
         - subnet: 172.28.0.0/16
-
-volumes:
-  data_share:
-
