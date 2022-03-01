@@ -1,7 +1,3 @@
-# OS garbage
-.DS_Store
-desktop.ini
-
 # IDE garbage
 .idea/
 
@@ -11,3 +7,4 @@ data/batches/*
 
 # Spark job results
 data/output/
+logs/*

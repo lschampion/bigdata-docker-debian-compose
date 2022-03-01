@@ -95,7 +95,7 @@ services:
       - "zoo3:172.28.1.13"
       
   master:
-    image: lisacumt/hadoop-hive-hbase-spark-docker:1.0.1
+    image: lisacumt/hadoop-hive-hbase-spark-docker:1.0.5
 #    build: '../hadoop-hive-spark-docker'
     hostname: master
     depends_on:
@@ -159,7 +159,7 @@ services:
       - "zoo3:172.28.1.13"
 
   worker1:
-    image: lisacumt/hadoop-hive-hbase-spark-docker:1.0.1
+    image: lisacumt/hadoop-hive-hbase-spark-docker:1.0.5
 #    build: '../hadoop-hive-spark-docker'
     hostname: worker1
     depends_on:
@@ -179,7 +179,6 @@ services:
       SPARK_LOCAL_IP: 172.28.1.2
       SPARK_MASTER_HOST: 172.28.1.1
       HADOOP_DATANODE_UI_PORT: 9864
-      SPARK_LOCAL_HOSTNAME: master
       ZOO_SERVERS_HOSTNAME:  zoo1 zoo2 zoo3
     expose:
       - 1-65535
@@ -209,7 +208,7 @@ services:
       - "zoo3:172.28.1.13"
 
   worker2:
-    image: lisacumt/hadoop-hive-hbase-spark-docker:1.0.1
+    image: lisacumt/hadoop-hive-hbase-spark-docker:1.0.5
 #    build: '../hadoop-hive-spark-docker'
     hostname: worker2
     depends_on:
@@ -229,7 +228,6 @@ services:
       SPARK_MASTER_HOST: 172.28.1.1
       HADOOP_NODE: datanode
       HADOOP_DATANODE_UI_PORT: 9865
-      SPARK_LOCAL_HOSTNAME: master
       ZOO_SERVERS_HOSTNAME:  zoo1 zoo2 zoo3
     expose:
       - 1-65535
@@ -259,7 +257,7 @@ services:
       - "zoo3:172.28.1.13"
 
   livy:
-    image: lisacumt/livy-bigdata-docker:1.0.1
+    image: lisacumt/livy-bigdata-docker:1.0.5
 #    build: '../livy-docker'
     hostname: livy
     depends_on:
@@ -299,7 +297,7 @@ services:
       - "zoo3:172.28.1.13"
 
   zeppelin:
-    image: lisacumt/zeppelin-bigdata-docker:1.0.1
+    image: lisacumt/zeppelin-bigdata-docker:1.0.5
 #    build: '../zeppelin-bigdata-docker'
     hostname: zeppelin
     depends_on:

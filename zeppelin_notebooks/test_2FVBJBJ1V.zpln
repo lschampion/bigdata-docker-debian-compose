@@ -418,7 +418,7 @@
     {
       "text": "%postgres\nselect 1;\n-- 创建模式\ncreate schema pguser_public;\n-- 设置模式\nset search_path\u003dpguser_public;",
       "user": "anonymous",
-      "dateUpdated": "2022-03-01 07:59:12.907",
+      "dateUpdated": "2022-03-01 10:46:24.692",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -488,14 +488,14 @@
       "jobName": "paragraph_1646035155512_1087423685",
       "id": "paragraph_1646035155512_1087423685",
       "dateCreated": "2022-02-28 07:59:15.512",
-      "dateStarted": "2022-03-01 07:59:13.078",
-      "dateFinished": "2022-03-01 07:59:17.524",
+      "dateStarted": "2022-03-01 10:46:24.841",
+      "dateFinished": "2022-03-01 10:46:28.290",
       "status": "FINISHED"
     },
     {
       "text": "%postgres\n-- 创建新表\nCREATE TABLE user_tbl(name VARCHAR(20), signup_date DATE);\n\n-- 插入数据\nINSERT INTO user_tbl(name, signup_date) VALUES(\u0027张三\u0027, \u00272013-12-22\u0027);\nINSERT INTO user_tbl(name, signup_date) VALUES(\u0027李四\u0027, \u00272005-10-02\u0027);\nINSERT INTO user_tbl(name, signup_date) VALUES(\u0027王五\u0027, \u00272016-03-17\u0027);\n\n-- 选择记录\nSELECT * FROM user_tbl;",
       "user": "anonymous",
-      "dateUpdated": "2022-03-01 07:59:32.941",
+      "dateUpdated": "2022-03-01 10:46:32.541",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -574,8 +574,8 @@
       "jobName": "paragraph_1646035175106_237084111",
       "id": "paragraph_1646035175106_237084111",
       "dateCreated": "2022-02-28 07:59:35.106",
-      "dateStarted": "2022-03-01 07:59:32.987",
-      "dateFinished": "2022-03-01 07:59:33.158",
+      "dateStarted": "2022-03-01 10:46:32.560",
+      "dateFinished": "2022-03-01 10:46:32.700",
       "status": "FINISHED"
     },
     {
