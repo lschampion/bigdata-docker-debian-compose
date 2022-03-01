@@ -760,6 +760,14 @@ scan 'tbl_user'
 
 ThriftServer is deloyed on worker2. python (etc APIs) may connect this service.
 
+### Postgres
+
+open 5431 port for postgre, using JDBC to access the database.
+
+create user `pguser` using password `123456`
+
+create database `pgdata` 
+
 ## Credits
 
 Sample data file:

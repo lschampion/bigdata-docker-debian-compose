@@ -7,6 +7,9 @@ services:
       POSTGRES_PASSWORD: new_password
     expose:
       - 5432
+    ports:
+      # JDBC 
+      - 5432:5432
     volumes:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     healthcheck:
@@ -92,7 +95,7 @@ services:
       - "zoo3:172.28.1.13"
       
   master:
-    image: hadoop-hive-hbase-spark-docker:1.0
+    image: lisacumt/hadoop-hive-hbase-spark-docker:1.0.1
 #    build: '../hadoop-hive-spark-docker'
     hostname: master
     depends_on:
@@ -156,7 +159,7 @@ services:
       - "zoo3:172.28.1.13"
 
   worker1:
-    image: hadoop-hive-hbase-spark-docker:1.0
+    image: lisacumt/hadoop-hive-hbase-spark-docker:1.0.1
 #    build: '../hadoop-hive-spark-docker'
     hostname: worker1
     depends_on:
@@ -206,7 +209,7 @@ services:
       - "zoo3:172.28.1.13"
 
   worker2:
-    image: hadoop-hive-hbase-spark-docker:1.0
+    image: lisacumt/hadoop-hive-hbase-spark-docker:1.0.1
 #    build: '../hadoop-hive-spark-docker'
     hostname: worker2
     depends_on:
@@ -256,7 +259,7 @@ services:
       - "zoo3:172.28.1.13"
 
   livy:
-    image: panovvv/livy:2.5.2
+    image: lisacumt/livy-bigdata-docker:1.0.1
 #    build: '../livy-docker'
     hostname: livy
     depends_on:
@@ -296,7 +299,7 @@ services:
       - "zoo3:172.28.1.13"
 
   zeppelin:
-    image: panovvv/zeppelin-bigdata:2.5.2
+    image: lisacumt/zeppelin-bigdata-docker:1.0.1
 #    build: '../zeppelin-bigdata-docker'
     hostname: zeppelin
     depends_on:
