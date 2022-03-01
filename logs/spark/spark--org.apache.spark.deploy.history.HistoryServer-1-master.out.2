@@ -1,0 +1,24 @@
+Spark Command: /usr/lib/jvm/java-1.8-openjdk/bin/java -cp /usr/spark/conf/:/usr/spark/jars/*:/usr/hadoop/etc/hadoop/:/usr/hadoop/share/hadoop/tools/lib/*:/usr/hadoop/share/hadoop/common/lib/*:/usr/hadoop/share/hadoop/common/*:/usr/hadoop/share/hadoop/hdfs/:/usr/hadoop/share/hadoop/hdfs/lib/*:/usr/hadoop/share/hadoop/hdfs/*:/usr/hadoop/share/hadoop/mapreduce/lib/*:/usr/hadoop/share/hadoop/mapreduce/*:/usr/hadoop/share/hadoop/yarn/:/usr/hadoop/share/hadoop/yarn/lib/*:/usr/hadoop/share/hadoop/yarn/* -Xmx1g org.apache.spark.deploy.history.HistoryServer
+========================================
+2022-02-28 22:16:11,541 INFO history.HistoryServer: Started daemon with process name: 1674@master
+2022-02-28 22:16:11,553 INFO util.SignalUtils: Registered signal handler for TERM
+2022-02-28 22:16:11,554 INFO util.SignalUtils: Registered signal handler for HUP
+2022-02-28 22:16:11,554 INFO util.SignalUtils: Registered signal handler for INT
+2022-02-28 22:16:12,114 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2022-02-28 22:16:12,267 INFO spark.SecurityManager: Changing view acls to: root
+2022-02-28 22:16:12,268 INFO spark.SecurityManager: Changing modify acls to: root
+2022-02-28 22:16:12,269 INFO spark.SecurityManager: Changing view acls groups to: 
+2022-02-28 22:16:12,270 INFO spark.SecurityManager: Changing modify acls groups to: 
+2022-02-28 22:16:12,271 INFO spark.SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(root); groups with view permissions: Set(); users  with modify permissions: Set(root); groups with modify permissions: Set()
+2022-02-28 22:16:12,422 INFO history.FsHistoryProvider: History server ui acls disabled; users with admin permissions: ; groups with admin permissions
+2022-02-28 22:16:13,731 INFO util.log: Logging initialized @3500ms
+2022-02-28 22:16:13,794 INFO server.Server: jetty-9.3.z-SNAPSHOT, build timestamp: 2018-06-06T01:11:56+08:00, git hash: 84205aa28f11a4f31f2a3b86d1bba2cc8ab69827
+2022-02-28 22:16:13,816 INFO server.Server: Started @3587ms
+2022-02-28 22:16:13,860 INFO server.AbstractConnector: Started ServerConnector@27a0a5a2{HTTP/1.1,[http/1.1]}{172.28.1.1:18080}
+2022-02-28 22:16:13,861 INFO util.Utils: Successfully started service on port 18080.
+2022-02-28 22:16:13,901 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@eadb475{/,null,AVAILABLE,@Spark}
+2022-02-28 22:16:13,902 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@bae47a0{/json,null,AVAILABLE,@Spark}
+2022-02-28 22:16:13,904 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@74a9c4b0{/api,null,AVAILABLE,@Spark}
+2022-02-28 22:16:13,921 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@10567255{/static,null,AVAILABLE,@Spark}
+2022-02-28 22:16:13,922 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@51bde877{/history,null,AVAILABLE,@Spark}
+2022-02-28 22:16:13,930 INFO history.HistoryServer: Bound HistoryServer to 172.28.1.1, and started at http://localhost:18080

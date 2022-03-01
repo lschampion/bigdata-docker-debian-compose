@@ -1,0 +1,1912 @@
+{
+  "interpreterSettings": {
+    "beam": {
+      "id": "beam",
+      "name": "beam",
+      "group": "beam",
+      "properties": {
+        "zeppelin.scio.argz": {
+          "name": "zeppelin.scio.argz",
+          "value": "--runner\u003dInProcessPipelineRunner",
+          "type": "textarea",
+          "description": "Scio interpreter wide arguments"
+        },
+        "zeppelin.scio.maxResult": {
+          "name": "zeppelin.scio.maxResult",
+          "value": "1000",
+          "type": "number",
+          "description": "Max number of SCollection results to display."
+        }
+      },
+      "status": "READY",
+      "interpreterGroup": [
+        {
+          "name": "beam",
+          "class": "org.apache.zeppelin.beam.BeamInterpreter",
+          "defaultInterpreter": true,
+          "editor": {
+            "editOnDblClick": false
+          }
+        },
+        {
+          "name": "scio",
+          "class": "org.apache.zeppelin.scio.ScioInterpreter",
+          "defaultInterpreter": false,
+          "editor": {
+            "language": "scala"
+          }
+        }
+      ],
+      "dependencies": [],
+      "option": {
+        "remote": true,
+        "port": -1,
+        "isExistingProcess": false,
+        "setPermission": false,
+        "owners": [],
+        "isUserImpersonate": false
+      }
+    },
+    "python": {
+      "id": "python",
+      "name": "python",
+      "group": "python",
+      "properties": {
+        "zeppelin.python": {
+          "name": "zeppelin.python",
+          "value": "python",
+          "type": "string",
+          "description": "Python binary executable path. It is set to python by default.(assume python is in your $PATH)"
+        },
+        "zeppelin.python.maxResult": {
+          "name": "zeppelin.python.maxResult",
+          "value": "1000",
+          "type": "number",
+          "description": "Max number of dataframe rows to display."
+        },
+        "zeppelin.python.useIPython": {
+          "name": "zeppelin.python.useIPython",
+          "value": true,
+          "type": "checkbox",
+          "description": "Whether use IPython when it is available in `%python`"
+        },
+        "zeppelin.ipython.launch.timeout": {
+          "name": "zeppelin.ipython.launch.timeout",
+          "value": "30000",
+          "type": "number",
+          "description": "Time out for ipython launch"
+        },
+        "zeppelin.ipython.grpc.message_size": {
+          "name": "zeppelin.ipython.grpc.message_size",
+          "value": "33554432",
+          "type": "number",
+          "description": "grpc message size, default is 32M"
+        }
+      },
+      "status": "READY",
+      "interpreterGroup": [
+        {
+          "name": "python",
+          "class": "org.apache.zeppelin.python.PythonInterpreter",
+          "defaultInterpreter": true,
+          "editor": {
+            "language": "python",
+            "editOnDblClick": false,
+            "completionSupport": true
+          }
+        },
+        {
+          "name": "ipython",
+          "class": "org.apache.zeppelin.python.IPythonInterpreter",
+          "defaultInterpreter": false,
+          "editor": {
+            "language": "python",
+            "editOnDblClick": false,
+            "completionKey": "TAB",
+            "completionSupport": true
+          }
+        },
+        {
+          "name": "sql",
+          "class": "org.apache.zeppelin.python.PythonInterpreterPandasSql",
+          "defaultInterpreter": false,
+          "editor": {
+            "language": "sql",
+            "editOnDblClick": false,
+            "completionKey": "TAB",
+            "completionSupport": false
+          }
+        },
+        {
+          "name": "conda",
+          "class": "org.apache.zeppelin.python.PythonCondaInterpreter",
+          "defaultInterpreter": false,
+          "editor": {
+            "language": "sh",
+            "editOnDblClick": false,
+            "completionSupport": false
+          }
+        },
+        {
+          "name": "docker",
+          "class": "org.apache.zeppelin.python.PythonDockerInterpreter",
+          "defaultInterpreter": false,
+          "editor": {
+            "language": "sh",
+            "editOnDblClick": false,
+            "completionSupport": false
+          }
+        }
+      ],
+      "dependencies": [],
+      "option": {
+        "remote": true,
+        "port": -1,
+        "isExistingProcess": false,
+        "setPermission": false,
+        "owners": [],
+        "isUserImpersonate": false
+      }
+    },
+    "kotlin": {
+      "id": "kotlin",
+      "name": "kotlin",
+      "group": "kotlin",
+      "properties": {
+        "zeppelin.kotlin.maxResult": {
+          "name": "zeppelin.kotlin.maxResult",
+          "value": "1000",
+          "type": "number",
+          "description": "Max number of dataframe rows to display."
+        },
+        "zeppelin.kotlin.shortenTypes": {
+          "name": "zeppelin.kotlin.shortenTypes",
+          "value": true,
+          "type": "checkbox",
+          "description": "Show short types instead of full, e.g. List\u003cString\u003e or kotlin.collections.List\u003ckotlin.String\u003e"
+        }
+      },
+      "status": "READY",
+      "interpreterGroup": [
+        {
+          "name": "kotlin",
+          "class": "org.apache.zeppelin.kotlin.KotlinInterpreter",
+          "defaultInterpreter": true,
+          "editor": {
+            "language": "kotlin",
+            "editOnDblClick": false
+          }
+        }
+      ],
+      "dependencies": [],
+      "option": {
+        "remote": true,
+        "port": -1,
+        "isExistingProcess": false,
+        "setPermission": false,
+        "owners": [],
+        "isUserImpersonate": false
+      }
+    },
+    "geode": {
+      "id": "geode",
+      "name": "geode",
+      "group": "geode",
+      "properties": {
+        "geode.locator.host": {
+          "name": "geode.locator.host",
+          "value": "localhost",
+          "type": "string",
+          "description": "The Geode Locator Host."
+        },
+        "geode.locator.port": {
+          "name": "geode.locator.port",
+          "value": "10334",
+          "type": "number",
+          "description": "The Geode Locator Port."
+        },
+        "geode.max.result": {
+          "name": "geode.max.result",
+          "value": "1000",
+          "type": "number",
+          "description": "Max number of OQL result to display."
+        }
+      },
+      "status": "READY",
+      "interpreterGroup": [
+        {
+          "name": "oql",
+          "class": "org.apache.zeppelin.geode.GeodeOqlInterpreter",
+          "defaultInterpreter": false,
+          "editor": {
+            "language": "sql"
+          }
+        }
+      ],
+      "dependencies": [],
+      "option": {
+        "remote": true,
+        "port": -1,
+        "isExistingProcess": false,
+        "setPermission": false,
+        "owners": [],
+        "isUserImpersonate": false
+      }
+    },
+    "jdbc": {
+      "id": "jdbc",
+      "name": "jdbc",
+      "group": "jdbc",
+      "properties": {
+        "default.url": {
+          "name": "default.url",
+          "value": "jdbc:hive2://master:10000",
+          "type": "string",
+          "description": "The URL for JDBC."
+        },
+        "default.user": {
+          "name": "default.user",
+          "value": "",
+          "type": "string",
+          "description": "The JDBC user name"
+        },
+        "default.password": {
+          "name": "default.password",
+          "value": "",
+          "type": "password",
+          "description": "The JDBC user password"
+        },
+        "default.driver": {
+          "name": "default.driver",
+          "value": "org.apache.hive.jdbc.HiveDriver",
+          "type": "string",
+          "description": "JDBC Driver Name"
+        },
+        "default.completer.ttlInSeconds": {
+          "name": "default.completer.ttlInSeconds",
+          "value": "120",
+          "type": "number",
+          "description": "Time to live sql completer in seconds (-1 to update everytime, 0 to disable update)"
+        },
+        "default.completer.schemaFilters": {
+          "name": "default.completer.schemaFilters",
+          "value": "",
+          "type": "textarea",
+          "description": "Сomma separated schema (schema \u003d catalog \u003d database) filters to get metadata for completions. Supports \u0027%\u0027 symbol is equivalent to any set of characters. (ex. prod_v_%,public%,info)"
+        },
+        "default.precode": {
+          "name": "default.precode",
+          "value": "",
+          "type": "textarea",
+          "description": "SQL which executes while opening connection"
+        },
+        "default.statementPrecode": {
+          "name": "default.statementPrecode",
+          "value": "",
+          "type": "string",
+          "description": "Runs before each run of the paragraph, in the same connection"
+        },
+        "common.max_count": {
+          "name": "common.max_count",
+          "value": "1000",
+          "type": "number",
+          "description": "Max number of SQL result to display."
+        },
+        "zeppelin.jdbc.auth.type": {
+          "name": "zeppelin.jdbc.auth.type",
+          "value": "",
+          "type": "string",
+          "description": "If auth type is needed, Example: KERBEROS"
+        },
+        "zeppelin.jdbc.concurrent.use": {
+          "name": "zeppelin.jdbc.concurrent.use",
+          "value": true,
+          "type": "checkbox",
+          "description": "Use parallel scheduler"
+        },
+        "zeppelin.jdbc.concurrent.max_connection": {
+          "name": "zeppelin.jdbc.concurrent.max_connection",
+          "value": "10",
+          "type": "number",
+          "description": "Number of concurrent execution"
+        },
+        "zeppelin.jdbc.keytab.location": {
+          "name": "zeppelin.jdbc.keytab.location",
+          "value": "",
+          "type": "string",
+          "description": "Kerberos keytab location"
+        },
+        "zeppelin.jdbc.principal": {
+          "name": "zeppelin.jdbc.principal",
+          "value": "",
+          "type": "string",
+          "description": "Kerberos principal"
+        },
+        "zeppelin.jdbc.interpolation": {
+          "name": "zeppelin.jdbc.interpolation",
+          "value": false,
+          "type": "checkbox",
+          "description": "Enable ZeppelinContext variable interpolation into paragraph text"
+        },
+        "zeppelin.jdbc.maxConnLifetime": {
+          "name": "zeppelin.jdbc.maxConnLifetime",
+          "value": "-1",
+          "type": "number",
+          "description": "Maximum of connection lifetime in milliseconds. A value of zero or less means the connection has an infinite lifetime."
+        },
+        "zeppelin.jdbc.maxRows": {
+          "name": "zeppelin.jdbc.maxRows",
+          "value": "1000",
+          "type": "number",
+          "description": "Maximum number of rows fetched from the query."
+        },
+        "default.splitQueries": {
+          "name": "default.splitQueries",
+          "value": false,
+          "type": "checkbox"
+        }
+      },
+      "status": "READY",
+      "interpreterGroup": [
+        {
+          "name": "sql",
+          "class": "org.apache.zeppelin.jdbc.JDBCInterpreter",
+          "defaultInterpreter": false,
+          "editor": {
+            "language": "sql",
+            "editOnDblClick": false,
+            "completionSupport": true
+          }
+        }
+      ],
+      "dependencies": [],
+      "option": {
+        "remote": true,
+        "port": -1,
+        "isExistingProcess": false,
+        "setPermission": false,
+        "owners": [],
+        "isUserImpersonate": false
+      }
+    },
+    "influxdb": {
+      "id": "influxdb",
+      "name": "influxdb",
+      "group": "influxdb",
+      "properties": {
+        "influxdb.url": {
+          "name": "influxdb.url",
+          "value": "http://localhost:9999",
+          "type": "string",
+          "description": "The URL for InfluxDB 2.X API"
+        },
+        "influxdb.token": {
+          "name": "influxdb.token",
+          "value": "my-token",
+          "type": "password",
+          "description": "InfluxDB auth token"
+        },
+        "influxdb.org": {
+          "name": "influxdb.org",
+          "value": "my-org",
+          "type": "string",
+          "description": "InfluxDB org name"
+        },
+        "influxdb.logLevel": {
+          "name": "influxdb.logLevel",
+          "value": "NONE",
+          "type": "string",
+          "description": "InfluxDB http client library verbosity level (NONE, BASIC, HEADERS, BODY)"
+        }
+      },
+      "status": "READY",
+      "interpreterGroup": [
+        {
+          "name": "influxdb",
+          "class": "org.apache.zeppelin.influxdb.InfluxDBInterpreter",
+          "defaultInterpreter": false,
+          "editor": {
+            "language": "sql",
+            "editOnDblClick": false,
+            "completionSupport": false
+          }
+        }
+      ],
+      "dependencies": [],
+      "option": {
+        "remote": true,
+        "port": -1,
+        "isExistingProcess": false,
+        "setPermission": false,
+        "owners": [],
+        "isUserImpersonate": false
+      }
+    },
+    "scalding": {
+      "id": "scalding",
+      "name": "scalding",
+      "group": "scalding",
+      "properties": {
+        "args.string": {
+          "name": "args.string",
+          "value": "--local --repl",
+          "type": "textarea",
+          "description": "Arguments for scalding REPL"
+        },
+        "max.open.instances": {
+          "name": "max.open.instances",
+          "value": "50",
+          "type": "number",
+          "description": "Maximum number of open interpreter instances"
+        }
+      },
+      "status": "READY",
+      "interpreterGroup": [
+        {
+          "name": "scalding",
+          "class": "org.apache.zeppelin.scalding.ScaldingInterpreter",
+          "defaultInterpreter": false
+        }
+      ],
+      "dependencies": [],
+      "option": {
+        "remote": true,
+        "port": -1,
+        "isExistingProcess": false,
+        "setPermission": false,
+        "owners": [],
+        "isUserImpersonate": false
+      }
+    },
+    "ksql": {
+      "id": "ksql",
+      "name": "ksql",
+      "group": "ksql",
+      "properties": {
+        "ksql.url": {
+          "name": "ksql.url",
+          "value": "http://localhost:8088",
+          "type": "string",
+          "description": "KSQL Endpoint base URL"
+        }
+      },
+      "status": "READY",
+      "interpreterGroup": [
+        {
+          "name": "ksql",
+          "class": "org.apache.zeppelin.ksql.KSQLInterpreter",
+          "defaultInterpreter": false,
+          "editor": {
+            "language": "sql",
+            "editOnDblClick": false,
+            "completionSupport": false
+          }
+        }
+      ],
+      "dependencies": [],
+      "option": {
+        "remote": true,
+        "port": -1,
+        "isExistingProcess": false,
+        "setPermission": false,
+        "owners": [],
+        "isUserImpersonate": false
+      }
+    },
+    "livy": {
+      "id": "livy",
+      "name": "livy",
+      "group": "livy",
+      "properties": {
+        "zeppelin.livy.url": {
+          "name": "zeppelin.livy.url",
+          "value": "http://livy:8998",
+          "type": "url",
+          "description": "The URL for Livy Server."
+        },
+        "zeppelin.livy.session.create_timeout": {
+          "name": "zeppelin.livy.session.create_timeout",
+          "value": "120",
+          "type": "number",
+          "description": "Livy Server create session timeout (seconds)."
+        },
+        "livy.spark.driver.cores": {
+          "name": "livy.spark.driver.cores",
+          "value": "",
+          "type": "number",
+          "description": "Driver cores. ex) 1, 2"
+        },
+        "livy.spark.driver.memory": {
+          "name": "livy.spark.driver.memory",
+          "value": "",
+          "type": "string",
+          "description": "Driver memory. ex) 512m, 32g"
+        },
+        "livy.spark.executor.instances": {
+          "name": "livy.spark.executor.instances",
+          "value": "",
+          "type": "number",
+          "description": "Executor instances. ex) 1, 4"
+        },
+        "livy.spark.executor.cores": {
+          "name": "livy.spark.executor.cores",
+          "value": "",
+          "type": "number",
+          "description": "Num cores per executor. ex) 1, 4"
+        },
+        "livy.spark.executor.memory": {
+          "name": "livy.spark.executor.memory",
+          "value": "",
+          "type": "string",
+          "description": "Executor memory per worker instance. ex) 512m, 32g"
+        },
+        "livy.spark.dynamicAllocation.enabled": {
+          "name": "livy.spark.dynamicAllocation.enabled",
+          "value": false,
+          "type": "checkbox",
+          "description": "Use dynamic resource allocation"
+        },
+        "livy.spark.dynamicAllocation.cachedExecutorIdleTimeout": {
+          "name": "livy.spark.dynamicAllocation.cachedExecutorIdleTimeout",
+          "value": "",
+          "type": "string",
+          "description": "Remove an executor which has cached data blocks"
+        },
+        "livy.spark.dynamicAllocation.minExecutors": {
+          "name": "livy.spark.dynamicAllocation.minExecutors",
+          "value": "",
+          "type": "number",
+          "description": "Lower bound for the number of executors if dynamic allocation is enabled."
+        },
+        "livy.spark.dynamicAllocation.initialExecutors": {
+          "name": "livy.spark.dynamicAllocation.initialExecutors",
+          "value": "",
+          "type": "number",
+          "description": "Initial number of executors to run if dynamic allocation is enabled."
+        },
+        "livy.spark.dynamicAllocation.maxExecutors": {
+          "name": "livy.spark.dynamicAllocation.maxExecutors",
+          "value": "",
+          "type": "number",
+          "description": "Upper bound for the number of executors if dynamic allocation is enabled."
+        },
+        "zeppelin.livy.principal": {
+          "name": "zeppelin.livy.principal",
+          "value": "",
+          "type": "string",
+          "description": "Kerberos principal to authenticate livy"
+        },
+        "zeppelin.livy.keytab": {
+          "name": "zeppelin.livy.keytab",
+          "value": "",
+          "type": "textarea",
+          "description": "Kerberos keytab to authenticate livy"
+        },
+        "zeppelin.livy.pull_status.interval.millis": {
+          "name": "zeppelin.livy.pull_status.interval.millis",
+          "value": "1000",
+          "type": "number",
+          "description": "The interval for checking paragraph execution status"
+        },
+        "zeppelin.livy.maxLogLines": {
+          "name": "zeppelin.livy.maxLogLines",
+          "value": "1000",
+          "type": "number",
+          "description": "Max number of lines of logs"
+        },
+        "livy.spark.jars.packages": {
+          "name": "livy.spark.jars.packages",
+          "value": "",
+          "type": "textarea",
+          "description": "Adding extra libraries to livy interpreter"
+        },
+        "zeppelin.livy.displayAppInfo": {
+          "name": "zeppelin.livy.displayAppInfo",
+          "value": true,
+          "type": "checkbox",
+          "description": "Whether display app info"
+        },
+        "zeppelin.livy.restart_dead_session": {
+          "name": "zeppelin.livy.restart_dead_session",
+          "value": false,
+          "type": "checkbox",
+          "description": "Whether restart a dead session"
+        },
+        "zeppelin.livy.spark.sql.maxResult": {
+          "name": "zeppelin.livy.spark.sql.maxResult",
+          "value": "1000",
+          "type": "number",
+          "description": "Max number of Spark SQL result to display."
+        },
+        "zeppelin.livy.spark.sql.field.truncate": {
+          "name": "zeppelin.livy.spark.sql.field.truncate",
+          "value": true,
+          "type": "checkbox",
+          "description": "If true, truncate field values longer than 20 characters."
+        },
+        "zeppelin.livy.concurrentSQL": {
+          "name": "zeppelin.livy.concurrentSQL",
+          "value": false,
+          "type": "checkbox",
+          "description": "Execute multiple SQL concurrently if set true."
+        }
+      },
+      "status": "READY",
+      "interpreterGroup": [
+        {
+          "name": "spark",
+          "class": "org.apache.zeppelin.livy.LivySparkInterpreter",
+          "defaultInterpreter": true,
+          "editor": {
+            "language": "scala",
+            "editOnDblClick": false,
+            "completionKey": "TAB",
+            "completionSupport": true
+          }
+        },
+        {
+          "name": "sql",
+          "class": "org.apache.zeppelin.livy.LivySparkSQLInterpreter",
+          "defaultInterpreter": false,
+          "editor": {
+            "language": "sql",
+            "editOnDblClick": false,
+            "completionKey": "TAB",
+            "completionSupport": true
+          }
+        },
+        {
+          "name": "pyspark",
+          "class": "org.apache.zeppelin.livy.LivyPySparkInterpreter",
+          "defaultInterpreter": false,
+          "editor": {
+            "language": "python",
+            "editOnDblClick": false,
+            "completionKey": "TAB",
+            "completionSupport": true
+          }
+        },
+        {
+          "name": "pyspark3",
+          "class": "org.apache.zeppelin.livy.LivyPySpark3Interpreter",
+          "defaultInterpreter": false,
+          "editor": {
+            "language": "python",
+            "editOnDblClick": false,
+            "completionKey": "TAB",
+            "completionSupport": true
+          }
+        },
+        {
+          "name": "sparkr",
+          "class": "org.apache.zeppelin.livy.LivySparkRInterpreter",
+          "defaultInterpreter": false,
+          "editor": {
+            "language": "r",
+            "editOnDblClick": false,
+            "completionKey": "TAB",
+            "completionSupport": true
+          }
+        },
+        {
+          "name": "shared",
+          "class": "org.apache.zeppelin.livy.LivySharedInterpreter",
+          "defaultInterpreter": false
+        }
+      ],
+      "dependencies": [],
+      "option": {
+        "remote": true,
+        "port": -1,
+        "perNote": "shared",
+        "perUser": "scoped",
+        "isExistingProcess": false,
+        "setPermission": false,
+        "owners": [],
+        "isUserImpersonate": false
+      }
+    },
+    "r": {
+      "id": "r",
+      "name": "r",
+      "group": "r",
+      "properties": {
+        "zeppelin.R.knitr": {
+          "name": "zeppelin.R.knitr",
+          "value": true,
+          "type": "checkbox",
+          "description": "Whether use knitr or not"
+        },
+        "zeppelin.R.cmd": {
+          "name": "zeppelin.R.cmd",
+          "value": "R",
+          "type": "string",
+          "description": "R binary executable path"
+        },
+        "zeppelin.R.image.width": {
+          "name": "zeppelin.R.image.width",
+          "value": "100%",
+          "type": "number",
+          "description": "Image width of R plotting"
+        },
+        "zeppelin.R.render.options": {
+          "name": "zeppelin.R.render.options",
+          "value": "out.format \u003d \u0027html\u0027, comment \u003d NA, echo \u003d FALSE, results \u003d \u0027asis\u0027, message \u003d F, warning \u003d F, fig.retina \u003d 2",
+          "type": "textarea",
+          "description": ""
+        },
+        "zeppelin.R.shiny.iframe_width": {
+          "name": "zeppelin.R.shiny.iframe_width",
+          "value": "100%",
+          "type": "text",
+          "description": "Width of iframe of R shiny app"
+        },
+        "zeppelin.R.shiny.iframe_height": {
+          "name": "zeppelin.R.shiny.iframe_height",
+          "value": "500px",
+          "type": "text",
+          "description": "Height of iframe of R shiny app"
+        }
+      },
+      "status": "READY",
+      "interpreterGroup": [
+        {
+          "name": "r",
+          "class": "org.apache.zeppelin.r.RInterpreter",
+          "defaultInterpreter": false,
+          "editor": {
+            "language": "r",
+            "editOnDblClick": false,
+            "completionSupport": true
+          }
+        },
+        {
+          "name": "ir",
+          "class": "org.apache.zeppelin.r.IRInterpreter",
+          "defaultInterpreter": false,
+          "editor": {
+            "language": "r",
+            "editOnDblClick": false,
+            "completionSupport": true
+          }
+        },
+        {
+          "name": "shiny",
+          "class": "org.apache.zeppelin.r.ShinyInterpreter",
+          "defaultInterpreter": false,
+          "editor": {
+            "language": "r",
+            "editOnDblClick": false,
+            "completionSupport": true
+          }
+        }
+      ],
+      "dependencies": [],
+      "option": {
+        "remote": true,
+        "port": -1,
+        "isExistingProcess": false,
+        "setPermission": false,
+        "owners": [],
+        "isUserImpersonate": false
+      }
+    },
+    "file": {
+      "id": "file",
+      "name": "file",
+      "group": "file",
+      "properties": {
+        "hdfs.url": {
+          "name": "hdfs.url",
+          "value": "http://localhost:50070/webhdfs/v1/",
+          "type": "url",
+          "description": "The URL for WebHDFS"
+        },
+        "hdfs.user": {
+          "name": "hdfs.user",
+          "value": "hdfs",
+          "type": "string",
+          "description": "The WebHDFS user"
+        },
+        "hdfs.maxlength": {
+          "name": "hdfs.maxlength",
+          "value": "1000",
+          "type": "number",
+          "description": "Maximum number of lines of results fetched"
+        }
+      },
+      "status": "READY",
+      "interpreterGroup": [
+        {
+          "name": "hdfs",
+          "class": "org.apache.zeppelin.file.HDFSFileInterpreter",
+          "defaultInterpreter": false,
+          "editor": {
+            "editOnDblClick": false,
+            "completionSupport": true
+          }
+        }
+      ],
+      "dependencies": [],
+      "option": {
+        "remote": true,
+        "port": -1,
+        "isExistingProcess": false,
+        "setPermission": false,
+        "owners": [],
+        "isUserImpersonate": false
+      }
+    },
+    "java": {
+      "id": "java",
+      "name": "java",
+      "group": "java",
+      "properties": {},
+      "status": "READY",
+      "interpreterGroup": [
+        {
+          "name": "java",
+          "class": "org.apache.zeppelin.java.JavaInterpreter",
+          "defaultInterpreter": true,
+          "editor": {
+            "language": "java",
+            "editOnDblClick": false
+          }
+        }
+      ],
+      "dependencies": [],
+      "option": {
+        "remote": true,
+        "port": -1,
+        "isExistingProcess": false,
+        "setPermission": false,
+        "owners": [],
+        "isUserImpersonate": false
+      }
+    },
+    "jupyter": {
+      "id": "jupyter",
+      "name": "jupyter",
+      "group": "jupyter",
+      "properties": {},
+      "status": "READY",
+      "interpreterGroup": [
+        {
+          "name": "jupyter",
+          "class": "org.apache.zeppelin.jupyter.JupyterInterpreter",
+          "defaultInterpreter": false,
+          "editor": {
+            "language": "text",
+            "editOnDblClick": false,
+            "completionKey": "TAB",
+            "completionSupport": true
+          }
+        }
+      ],
+      "dependencies": [],
+      "option": {
+        "remote": true,
+        "port": -1,
+        "isExistingProcess": false,
+        "setPermission": false,
+        "owners": [],
+        "isUserImpersonate": false
+      }
+    },
+    "submarine": {
+      "id": "submarine",
+      "name": "submarine",
+      "group": "submarine",
+      "properties": {
+        "zeppelin.submarine.auth.type": {
+          "name": "zeppelin.submarine.auth.type",
+          "value": "kerberos",
+          "type": "string",
+          "description": "simple or kerberos"
+        },
+        "yarn.webapp.http.address": {
+          "name": "yarn.webapp.http.address",
+          "value": "",
+          "type": "string",
+          "description": "YARN web ui address"
+        },
+        "INTERPRETER_LAUNCH_MODE": {
+          "name": "INTERPRETER_LAUNCH_MODE",
+          "value": "local",
+          "type": "string",
+          "description": "Submarine interpreter launch in local/yarn"
+        },
+        "HADOOP_YARN_SUBMARINE_JAR": {
+          "name": "HADOOP_YARN_SUBMARINE_JAR",
+          "value": "",
+          "type": "string",
+          "description": "Submarine executive full path, ex) ../hadoop/share/hadoop/yarn/hadoop-yarn-submarine-x.x.x.jar"
+        },
+        "DOCKER_HADOOP_HDFS_HOME": {
+          "name": "DOCKER_HADOOP_HDFS_HOME",
+          "value": "",
+          "type": "string",
+          "description": "hadoop home in docker container"
+        },
+        "DOCKER_JAVA_HOME": {
+          "name": "DOCKER_JAVA_HOME",
+          "value": "",
+          "type": "string",
+          "description": "java home in docker container"
+        },
+        "SUBMARINE_INTERPRETER_DOCKER_IMAGE": {
+          "name": "SUBMARINE_INTERPRETER_DOCKER_IMAGE",
+          "value": "",
+          "type": "string",
+          "description": "Docker image of submarine interpreter"
+        },
+        "zeppelin.interpreter.rpc.portRange": {
+          "name": "zeppelin.interpreter.rpc.portRange",
+          "value": "29914",
+          "type": "string",
+          "description": "The process port of the submarine interpreter container mapping defined in the `scripts/docker/interpreter/submarine/tensorflow_gpu/Dockerfile` file"
+        },
+        "submarine.yarn.queue": {
+          "name": "submarine.yarn.queue",
+          "value": "root.default",
+          "type": "string",
+          "description": "submarine queue name of yarn"
+        },
+        "submarine.hadoop.home": {
+          "name": "submarine.hadoop.home",
+          "value": "",
+          "type": "string",
+          "description": "submarine user-defined HADOOP_HOME"
+        },
+        "SUBMARINE_HADOOP_CONF_DIR": {
+          "name": "SUBMARINE_HADOOP_CONF_DIR",
+          "value": "",
+          "type": "string",
+          "description": "submarine user-defined HADOOP_CONF_DIR"
+        },
+        "submarine.hadoop.krb5.conf": {
+          "name": "submarine.hadoop.krb5.conf",
+          "value": "/etc/krb5.conf",
+          "type": "string",
+          "description": "submarine user-defined hdfs/yarn kerberos authentication krb5.conf"
+        },
+        "SUBMARINE_HADOOP_KEYTAB": {
+          "name": "SUBMARINE_HADOOP_KEYTAB",
+          "value": "",
+          "type": "string",
+          "description": "submarine hdfs/yarn kerberos authentication"
+        },
+        "SUBMARINE_HADOOP_PRINCIPAL": {
+          "name": "SUBMARINE_HADOOP_PRINCIPAL",
+          "value": "",
+          "type": "string",
+          "description": "submarine hdfs/yarn kerberos authentication"
+        },
+        "docker.container.network": {
+          "name": "docker.container.network",
+          "value": "",
+          "type": "string",
+          "description": "Network name in the docker container"
+        },
+        "DOCKER_CONTAINER_TIME_ZONE": {
+          "name": "DOCKER_CONTAINER_TIME_ZONE",
+          "value": "Etc/UTC",
+          "type": "string",
+          "description": "docker container time zone"
+        },
+        "zeppelin.interpreter.connect.timeout": {
+          "name": "zeppelin.interpreter.connect.timeout",
+          "value": "100000",
+          "type": "number",
+          "description": "zeppelin interpreter connect timeout"
+        },
+        "submarine.algorithm.hdfs.path": {
+          "name": "submarine.algorithm.hdfs.path",
+          "value": "hdfs://...",
+          "type": "string",
+          "description": "Algorithm file upload HDFS path, Support ${username} variable symbol, For example: hdfs:///usr/${username}"
+        },
+        "tf.parameter.services.num": {
+          "name": "tf.parameter.services.num",
+          "value": "1",
+          "type": "number",
+          "description": "Number of parameter services"
+        },
+        "tf.worker.services.num": {
+          "name": "tf.worker.services.num",
+          "value": "0",
+          "type": "number",
+          "description": "Number of worker services"
+        },
+        "tf.parameter.services.docker.image": {
+          "name": "tf.parameter.services.docker.image",
+          "value": "",
+          "type": "string",
+          "description": "Docker image of parameter services"
+        },
+        "tf.parameter.services.gpu": {
+          "name": "tf.parameter.services.gpu",
+          "value": "0",
+          "type": "number",
+          "description": "GPU number of parameter services"
+        },
+        "tf.parameter.services.cpu": {
+          "name": "tf.parameter.services.cpu",
+          "value": "2",
+          "type": "number",
+          "description": "CPU number of parameter services"
+        },
+        "tf.parameter.services.memory": {
+          "name": "tf.parameter.services.memory",
+          "value": "2G",
+          "type": "string",
+          "description": "Memory number of parameter services"
+        },
+        "tf.worker.services.docker.image": {
+          "name": "tf.worker.services.docker.image",
+          "value": "",
+          "type": "string",
+          "description": "Docker image of worker services"
+        },
+        "tf.worker.services.gpu": {
+          "name": "tf.worker.services.gpu",
+          "value": "0",
+          "type": "number",
+          "description": "GPU number of worker services"
+        },
+        "tf.worker.services.cpu": {
+          "name": "tf.worker.services.cpu",
+          "value": "2",
+          "type": "number",
+          "description": "CPU number of worker services"
+        },
+        "tf.worker.services.memory": {
+          "name": "tf.worker.services.memory",
+          "value": "4G",
+          "type": "string",
+          "description": "Memory number of worker services"
+        },
+        "tf.tensorboard.enable": {
+          "name": "tf.tensorboard.enable",
+          "value": true,
+          "type": "checkbox",
+          "description": "Whether to enable tensorboard"
+        },
+        "tf.checkpoint.path": {
+          "name": "tf.checkpoint.path",
+          "value": "",
+          "type": "string",
+          "description": "tensorflow checkpoint path"
+        },
+        "zeppelin.python": {
+          "name": "zeppelin.python",
+          "value": "python",
+          "type": "string",
+          "description": "Python directory. It is set to python by default.(assume python is in your $PATH)"
+        },
+        "zeppelin.python.maxResult": {
+          "name": "zeppelin.python.maxResult",
+          "value": "1000",
+          "type": "number",
+          "description": "Max number of dataframe rows to display."
+        },
+        "zeppelin.python.useIPython": {
+          "name": "zeppelin.python.useIPython",
+          "value": false,
+          "type": "checkbox",
+          "description": "whether use IPython when it is available"
+        },
+        "machinelearning.distributed.enable": {
+          "name": "machinelearning.distributed.enable",
+          "value": false,
+          "type": "checkbox",
+          "description": "Running distributed machine learning"
+        },
+        "zeppelin.ipython.launch.timeout": {
+          "name": "zeppelin.ipython.launch.timeout",
+          "value": "30000",
+          "type": "number",
+          "description": "time out for ipython launch"
+        },
+        "zeppelin.ipython.grpc.message_size": {
+          "name": "zeppelin.ipython.grpc.message_size",
+          "value": "33554432",
+          "type": "number",
+          "description": "grpc message size, default is 32M"
+        },
+        "shell.command.timeout.millisecs": {
+          "name": "shell.command.timeout.millisecs",
+          "value": "60000",
+          "type": "number",
+          "description": "Shell command time out in millisecs. Default \u003d 60000"
+        }
+      },
+      "status": "READY",
+      "interpreterGroup": [
+        {
+          "name": "submarine",
+          "class": "org.apache.zeppelin.submarine.SubmarineInterpreter",
+          "defaultInterpreter": true,
+          "editor": {
+            "language": "sh",
+            "editOnDblClick": false,
+            "completionSupport": false
+          },
+          "config": {
+            "fontSize": 9.0,
+            "colWidth": 12.0,
+            "runOnSelectionChange": false,
+            "title": true
+          }
+        },
+        {
+          "name": "python",
+          "class": "org.apache.zeppelin.submarine.PySubmarineInterpreter",
+          "defaultInterpreter": false,
+          "editor": {
+            "language": "python",
+            "editOnDblClick": false,
+            "completionSupport": true
+          }
+        },
+        {
+          "name": "ipython",
+          "class": "org.apache.zeppelin.submarine.IPySubmarineInterpreter",
+          "defaultInterpreter": false,
+          "editor": {
+            "language": "python",
+            "editOnDblClick": false,
+            "completionKey": "TAB",
+            "completionSupport": true
+          }
+        },
+        {
+          "name": "sh",
+          "class": "org.apache.zeppelin.submarine.SubmarineShellInterpreter",
+          "defaultInterpreter": false,
+          "editor": {
+            "language": "sh",
+            "editOnDblClick": false,
+            "completionSupport": false
+          }
+        }
+      ],
+      "dependencies": [],
+      "option": {
+        "remote": true,
+        "port": -1,
+        "isExistingProcess": false,
+        "setPermission": false,
+        "owners": [],
+        "isUserImpersonate": false
+      }
+    },
+    "sh": {
+      "id": "sh",
+      "name": "sh",
+      "group": "sh",
+      "properties": {
+        "shell.command.timeout.millisecs": {
+          "name": "shell.command.timeout.millisecs",
+          "value": "60000",
+          "type": "number",
+          "description": "Shell command time out in millisecs. Default \u003d 60000"
+        },
+        "shell.working.directory.user.home": {
+          "name": "shell.working.directory.user.home",
+          "value": false,
+          "type": "checkbox",
+          "description": "If this set to true, the shell\u0027s working directory will be set to user home"
+        },
+        "zeppelin.shell.auth.type": {
+          "name": "zeppelin.shell.auth.type",
+          "value": "",
+          "type": "string",
+          "description": "If auth type is needed, Example: KERBEROS"
+        },
+        "zeppelin.shell.keytab.location": {
+          "name": "zeppelin.shell.keytab.location",
+          "value": "",
+          "type": "string",
+          "description": "Kerberos keytab location"
+        },
+        "zeppelin.shell.principal": {
+          "name": "zeppelin.shell.principal",
+          "value": "",
+          "type": "string",
+          "description": "Kerberos principal"
+        },
+        "zeppelin.shell.interpolation": {
+          "name": "zeppelin.shell.interpolation",
+          "value": false,
+          "type": "checkbox",
+          "description": "Enable ZeppelinContext variable interpolation into paragraph text"
+        }
+      },
+      "status": "READY",
+      "interpreterGroup": [
+        {
+          "name": "sh",
+          "class": "org.apache.zeppelin.shell.ShellInterpreter",
+          "defaultInterpreter": true,
+          "editor": {
+            "language": "sh",
+            "editOnDblClick": false,
+            "completionSupport": false
+          }
+        },
+        {
+          "name": "terminal",
+          "class": "org.apache.zeppelin.shell.TerminalInterpreter",
+          "defaultInterpreter": false,
+          "editor": {
+            "language": "sh",
+            "editOnDblClick": false,
+            "completionSupport": false
+          },
+          "config": {
+            "checkEmpty": false
+          }
+        }
+      ],
+      "dependencies": [],
+      "option": {
+        "remote": true,
+        "port": -1,
+        "isExistingProcess": false,
+        "setPermission": false,
+        "owners": [],
+        "isUserImpersonate": false
+      }
+    },
+    "spark": {
+      "id": "spark",
+      "name": "spark",
+      "group": "spark",
+      "properties": {
+        "spark.app.name": {
+          "name": "spark.app.name",
+          "value": "Zeppelin",
+          "type": "string",
+          "description": "The name of spark application."
+        },
+        "spark.executor.memory": {
+          "name": "spark.executor.memory",
+          "value": "",
+          "type": "string",
+          "description": "Executor memory per worker instance. ex) 512m, 32g"
+        },
+        "zeppelin.spark.useHiveContext": {
+          "name": "zeppelin.spark.useHiveContext",
+          "value": true,
+          "type": "checkbox",
+          "description": "Use HiveContext instead of SQLContext if it is true. Enable hive for SparkSession."
+        },
+        "zeppelin.spark.printREPLOutput": {
+          "name": "zeppelin.spark.printREPLOutput",
+          "value": true,
+          "type": "checkbox",
+          "description": "Print REPL output"
+        },
+        "zeppelin.spark.maxResult": {
+          "name": "zeppelin.spark.maxResult",
+          "value": "1000",
+          "type": "number",
+          "description": "Max number of result to display."
+        },
+        "zeppelin.spark.enableSupportedVersionCheck": {
+          "name": "zeppelin.spark.enableSupportedVersionCheck",
+          "value": true,
+          "type": "checkbox",
+          "description": "Whether checking supported spark version. Developer only setting, not for production use"
+        },
+        "zeppelin.spark.uiWebUrl": {
+          "name": "zeppelin.spark.uiWebUrl",
+          "value": "",
+          "type": "string",
+          "description": "Override Spark UI default URL. In Kubernetes mode, value can be Jinja template string with 3 template variables \u0027PORT\u0027, \u0027SERVICE_NAME\u0027 and \u0027SERVICE_DOMAIN\u0027. (ex: http://{{PORT}}-{{SERVICE_NAME}}.{{SERVICE_DOMAIN}})"
+        },
+        "zeppelin.spark.ui.hidden": {
+          "name": "zeppelin.spark.ui.hidden",
+          "value": false,
+          "type": "checkbox",
+          "description": "Whether hide spark ui in zeppelin ui"
+        },
+        "zeppelin.spark.concurrentSQL": {
+          "name": "zeppelin.spark.concurrentSQL",
+          "value": false,
+          "type": "checkbox",
+          "description": "Execute multiple SQL concurrently if set true."
+        },
+        "zeppelin.spark.sql.stacktrace": {
+          "name": "zeppelin.spark.sql.stacktrace",
+          "value": false,
+          "type": "checkbox",
+          "description": "Show full exception stacktrace for SQL queries if set to true."
+        },
+        "zeppelin.spark.sql.interpolation": {
+          "name": "zeppelin.spark.sql.interpolation",
+          "value": false,
+          "type": "checkbox",
+          "description": "Enable ZeppelinContext variable interpolation into spark sql"
+        },
+        "zeppelin.pyspark.useIPython": {
+          "name": "zeppelin.pyspark.useIPython",
+          "value": true,
+          "type": "checkbox",
+          "description": "Whether use IPython when it is available"
+        },
+        "zeppelin.R.knitr": {
+          "name": "zeppelin.R.knitr",
+          "value": true,
+          "type": "checkbox",
+          "description": "Whether use knitr or not"
+        },
+        "zeppelin.R.cmd": {
+          "name": "zeppelin.R.cmd",
+          "value": "R",
+          "type": "string",
+          "description": "R binary executable path"
+        },
+        "zeppelin.R.image.width": {
+          "name": "zeppelin.R.image.width",
+          "value": "100%",
+          "type": "number",
+          "description": "Image width of R plotting"
+        },
+        "zeppelin.R.render.options": {
+          "name": "zeppelin.R.render.options",
+          "value": "out.format \u003d \u0027html\u0027, comment \u003d NA, echo \u003d FALSE, results \u003d \u0027asis\u0027, message \u003d F, warning \u003d F, fig.retina \u003d 2",
+          "type": "textarea",
+          "description": ""
+        },
+        "zeppelin.spark.importImplicit": {
+          "name": "zeppelin.spark.importImplicit",
+          "value": true,
+          "type": "checkbox"
+        },
+        "zeppelin.dep.additionalRemoteRepository": {
+          "name": "zeppelin.dep.additionalRemoteRepository",
+          "value": "spark-packages,http://dl.bintray.com/spark-packages/maven,false;",
+          "type": "textarea"
+        },
+        "master": {
+          "name": "master",
+          "value": "yarn-client",
+          "type": "string"
+        },
+        "zeppelin.pyspark.python": {
+          "name": "zeppelin.pyspark.python",
+          "value": "python",
+          "type": "string"
+        },
+        "args": {
+          "name": "args",
+          "value": "",
+          "type": "textarea"
+        },
+        "zeppelin.spark.useNew": {
+          "name": "zeppelin.spark.useNew",
+          "value": true,
+          "type": "checkbox"
+        },
+        "zeppelin.dep.localrepo": {
+          "name": "zeppelin.dep.localrepo",
+          "value": "local-repo",
+          "type": "string"
+        },
+        "spark.cores.max": {
+          "name": "spark.cores.max",
+          "value": "",
+          "type": "number"
+        }
+      },
+      "status": "READY",
+      "interpreterGroup": [
+        {
+          "name": "spark",
+          "class": "org.apache.zeppelin.spark.SparkInterpreter",
+          "defaultInterpreter": true,
+          "editor": {
+            "language": "scala",
+            "editOnDblClick": false,
+            "completionKey": "TAB",
+            "completionSupport": true
+          }
+        },
+        {
+          "name": "sql",
+          "class": "org.apache.zeppelin.spark.SparkSqlInterpreter",
+          "defaultInterpreter": false,
+          "editor": {
+            "language": "sql",
+            "editOnDblClick": false,
+            "completionKey": "TAB",
+            "completionSupport": true
+          }
+        },
+        {
+          "name": "pyspark",
+          "class": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "defaultInterpreter": false,
+          "editor": {
+            "language": "python",
+            "editOnDblClick": false,
+            "completionKey": "TAB",
+            "completionSupport": true
+          }
+        },
+        {
+          "name": "ipyspark",
+          "class": "org.apache.zeppelin.spark.IPySparkInterpreter",
+          "defaultInterpreter": false,
+          "editor": {
+            "language": "python",
+            "editOnDblClick": false,
+            "completionSupport": true,
+            "completionKey": "TAB"
+          }
+        },
+        {
+          "name": "r",
+          "class": "org.apache.zeppelin.spark.SparkRInterpreter",
+          "defaultInterpreter": false,
+          "editor": {
+            "language": "r",
+            "editOnDblClick": false,
+            "completionSupport": false,
+            "completionKey": "TAB"
+          }
+        },
+        {
+          "name": "ir",
+          "class": "org.apache.zeppelin.spark.SparkIRInterpreter",
+          "defaultInterpreter": false,
+          "editor": {
+            "language": "r",
+            "editOnDblClick": false,
+            "completionSupport": true,
+            "completionKey": "TAB"
+          }
+        },
+        {
+          "name": "shiny",
+          "class": "org.apache.zeppelin.spark.SparkShinyInterpreter",
+          "defaultInterpreter": false,
+          "editor": {
+            "language": "r",
+            "editOnDblClick": false,
+            "completionSupport": true,
+            "completionKey": "TAB"
+          }
+        },
+        {
+          "name": "kotlin",
+          "class": "org.apache.zeppelin.spark.KotlinSparkInterpreter",
+          "defaultInterpreter": false,
+          "editor": {
+            "language": "kotlin",
+            "editOnDblClick": false,
+            "completionKey": "TAB",
+            "completionSupport": false
+          }
+        }
+      ],
+      "dependencies": [],
+      "option": {
+        "remote": true,
+        "port": -1,
+        "isExistingProcess": false,
+        "setPermission": false,
+        "owners": [],
+        "isUserImpersonate": false
+      }
+    },
+    "md": {
+      "id": "md",
+      "name": "md",
+      "group": "md",
+      "properties": {
+        "markdown.parser.type": {
+          "name": "markdown.parser.type",
+          "value": "pegdown",
+          "type": "string",
+          "description": "Markdown Parser Type. Available values: pegdown, markdown4j, flexmark. Default \u003d flexmark"
+        }
+      },
+      "status": "READY",
+      "interpreterGroup": [
+        {
+          "name": "md",
+          "class": "org.apache.zeppelin.markdown.Markdown",
+          "defaultInterpreter": false,
+          "editor": {
+            "language": "markdown",
+            "editOnDblClick": true,
+            "completionSupport": false
+          }
+        }
+      ],
+      "dependencies": [],
+      "option": {
+        "remote": true,
+        "port": -1,
+        "isExistingProcess": false,
+        "setPermission": false,
+        "owners": [],
+        "isUserImpersonate": false
+      }
+    },
+    "hazelcastjet": {
+      "id": "hazelcastjet",
+      "name": "hazelcastjet",
+      "group": "hazelcastjet",
+      "properties": {},
+      "status": "READY",
+      "interpreterGroup": [
+        {
+          "name": "hazelcastjet",
+          "class": "org.apache.zeppelin.hazelcastjet.HazelcastJetInterpreter",
+          "defaultInterpreter": true,
+          "editor": {
+            "language": "java",
+            "editOnDblClick": false
+          }
+        }
+      ],
+      "dependencies": [],
+      "option": {
+        "remote": true,
+        "port": -1,
+        "isExistingProcess": false,
+        "setPermission": false,
+        "owners": [],
+        "isUserImpersonate": false
+      }
+    },
+    "sparql": {
+      "id": "sparql",
+      "name": "sparql",
+      "group": "sparql",
+      "properties": {
+        "sparql.engine": {
+          "name": "sparql.engine",
+          "value": "jena",
+          "type": "string",
+          "description": "The sparql engine to use for the queries. Default: jena"
+        },
+        "sparql.endpoint": {
+          "name": "sparql.endpoint",
+          "value": "http://dbpedia.org/sparql",
+          "type": "string",
+          "description": "Complete URL of the endpoint. Default: http://dbpedia.org/sparql"
+        },
+        "sparql.replaceURIs": {
+          "name": "sparql.replaceURIs",
+          "value": true,
+          "type": "checkbox",
+          "description": "Replace the URIs in the result with the prefixes. Default: true"
+        },
+        "sparql.removeDatatypes": {
+          "name": "sparql.removeDatatypes",
+          "value": true,
+          "type": "checkbox",
+          "description": "Remove the datatypes from Literals so Zeppelin can use the values. Default: true"
+        }
+      },
+      "status": "READY",
+      "interpreterGroup": [
+        {
+          "name": "sparql",
+          "class": "org.apache.zeppelin.sparql.SparqlInterpreter",
+          "defaultInterpreter": false,
+          "editor": {
+            "language": "sparql",
+            "editOnDblClick": false,
+            "completionKey": "TAB"
+          }
+        }
+      ],
+      "dependencies": [],
+      "option": {
+        "remote": true,
+        "port": -1,
+        "isExistingProcess": false,
+        "setPermission": false,
+        "owners": [],
+        "isUserImpersonate": false
+      }
+    },
+    "mongodb": {
+      "id": "mongodb",
+      "name": "mongodb",
+      "group": "mongodb",
+      "properties": {
+        "mongo.shell.path": {
+          "name": "mongo.shell.path",
+          "value": "mongo",
+          "type": "string",
+          "description": "MongoDB shell local path"
+        },
+        "mongo.shell.command.table.limit": {
+          "name": "mongo.shell.command.table.limit",
+          "value": "1000",
+          "type": "number",
+          "description": "Limit of documents displayed in a table"
+        },
+        "mongo.shell.command.timeout": {
+          "name": "mongo.shell.command.timeout",
+          "value": "60000",
+          "type": "number",
+          "description": "MongoDB shell command timeout"
+        },
+        "mongo.server.host": {
+          "name": "mongo.server.host",
+          "value": "localhost",
+          "type": "string",
+          "description": "MongoDB server host to connect to"
+        },
+        "mongo.server.port": {
+          "name": "mongo.server.port",
+          "value": "27017",
+          "type": "number",
+          "description": "MongoDB server port to connect to"
+        },
+        "mongo.server.database": {
+          "name": "mongo.server.database",
+          "value": "test",
+          "type": "string",
+          "description": "MongoDB database name"
+        },
+        "mongo.server.authenticationDatabase": {
+          "name": "mongo.server.authenticationDatabase",
+          "value": "",
+          "type": "string",
+          "description": "MongoDB database name for authentication"
+        },
+        "mongo.server.username": {
+          "name": "mongo.server.username",
+          "value": "",
+          "type": "string",
+          "description": "Username for authentication"
+        },
+        "mongo.server.password": {
+          "name": "mongo.server.password",
+          "value": "",
+          "type": "password",
+          "description": "Password for authentication"
+        },
+        "mongo.interpreter.concurrency.max": {
+          "name": "mongo.interpreter.concurrency.max",
+          "value": "10",
+          "type": "number",
+          "description": "Max count of scheduler concurrency"
+        }
+      },
+      "status": "READY",
+      "interpreterGroup": [
+        {
+          "name": "mongodb",
+          "class": "org.apache.zeppelin.mongodb.MongoDbInterpreter",
+          "defaultInterpreter": false,
+          "editor": {
+            "language": "javascript",
+            "editOnDblClick": false,
+            "completionKey": "TAB"
+          }
+        }
+      ],
+      "dependencies": [],
+      "option": {
+        "remote": true,
+        "port": -1,
+        "isExistingProcess": false,
+        "setPermission": false,
+        "owners": [],
+        "isUserImpersonate": false
+      }
+    },
+    "postgres": {
+      "id": "postgres",
+      "name": "postgres",
+      "group": "jdbc",
+      "properties": {
+        "default.url": {
+          "name": "default.url",
+          "value": "jdbc:postgresql://hivemetastore:5432/pgdata",
+          "type": "string",
+          "description": "The URL for JDBC."
+        },
+        "default.user": {
+          "name": "default.user",
+          "value": "pguser",
+          "type": "string",
+          "description": "The JDBC user name"
+        },
+        "default.password": {
+          "name": "default.password",
+          "value": "123456",
+          "type": "password",
+          "description": "The JDBC user password"
+        },
+        "default.driver": {
+          "name": "default.driver",
+          "value": "org.postgresql.Driver",
+          "type": "string",
+          "description": "JDBC Driver Name"
+        },
+        "default.completer.ttlInSeconds": {
+          "name": "default.completer.ttlInSeconds",
+          "value": "120",
+          "type": "number",
+          "description": "Time to live sql completer in seconds (-1 to update everytime, 0 to disable update)"
+        },
+        "default.completer.schemaFilters": {
+          "name": "default.completer.schemaFilters",
+          "value": "",
+          "type": "textarea",
+          "description": "Сomma separated schema (schema \u003d catalog \u003d database) filters to get metadata for completions. Supports \u0027%\u0027 symbol is equivalent to any set of characters. (ex. prod_v_%,public%,info)"
+        },
+        "default.precode": {
+          "name": "default.precode",
+          "value": "",
+          "type": "textarea",
+          "description": "SQL which executes while opening connection"
+        },
+        "default.statementPrecode": {
+          "name": "default.statementPrecode",
+          "value": "",
+          "type": "textarea",
+          "description": "Runs before each run of the paragraph, in the same connection"
+        },
+        "common.max_count": {
+          "name": "common.max_count",
+          "value": "1000",
+          "type": "number",
+          "description": "Max number of SQL result to display."
+        },
+        "zeppelin.jdbc.auth.type": {
+          "name": "zeppelin.jdbc.auth.type",
+          "value": "",
+          "type": "string",
+          "description": "If auth type is needed, Example: KERBEROS"
+        },
+        "zeppelin.jdbc.auth.kerberos.proxy.enable": {
+          "name": "zeppelin.jdbc.auth.kerberos.proxy.enable",
+          "value": "true",
+          "type": "checkbox",
+          "description": "When auth type is Kerberos, enable/disable Kerberos proxy with the login user to get the connection. Default value is true."
+        },
+        "zeppelin.jdbc.concurrent.use": {
+          "name": "zeppelin.jdbc.concurrent.use",
+          "value": true,
+          "type": "checkbox",
+          "description": "Use parallel scheduler"
+        },
+        "zeppelin.jdbc.concurrent.max_connection": {
+          "name": "zeppelin.jdbc.concurrent.max_connection",
+          "value": "10",
+          "type": "number",
+          "description": "Number of concurrent execution"
+        },
+        "zeppelin.jdbc.keytab.location": {
+          "name": "zeppelin.jdbc.keytab.location",
+          "value": "",
+          "type": "string",
+          "description": "Kerberos keytab location"
+        },
+        "zeppelin.jdbc.principal": {
+          "name": "zeppelin.jdbc.principal",
+          "value": "",
+          "type": "string",
+          "description": "Kerberos principal"
+        },
+        "zeppelin.jdbc.interpolation": {
+          "name": "zeppelin.jdbc.interpolation",
+          "value": false,
+          "type": "checkbox",
+          "description": "Enable ZeppelinContext variable interpolation into paragraph text"
+        },
+        "zeppelin.jdbc.maxConnLifetime": {
+          "name": "zeppelin.jdbc.maxConnLifetime",
+          "value": "-1",
+          "type": "number",
+          "description": "Maximum of connection lifetime in milliseconds. A value of zero or less means the connection has an infinite lifetime."
+        },
+        "zeppelin.jdbc.maxRows": {
+          "name": "zeppelin.jdbc.maxRows",
+          "value": "1000",
+          "type": "number",
+          "description": "Maximum number of rows fetched from the query."
+        },
+        "zeppelin.jdbc.hive.timeout.threshold": {
+          "name": "zeppelin.jdbc.hive.timeout.threshold",
+          "value": "60000",
+          "type": "number",
+          "description": "Timeout for hive job timeout"
+        }
+      },
+      "status": "READY",
+      "interpreterGroup": [
+        {
+          "name": "sql",
+          "class": "org.apache.zeppelin.jdbc.JDBCInterpreter",
+          "defaultInterpreter": false,
+          "editor": {
+            "language": "sql",
+            "editOnDblClick": false,
+            "completionSupport": true
+          }
+        }
+      ],
+      "dependencies": [],
+      "option": {
+        "remote": true,
+        "port": -1,
+        "perNote": "shared",
+        "perUser": "shared",
+        "isExistingProcess": false,
+        "setPermission": false,
+        "owners": [],
+        "isUserImpersonate": false
+      }
+    }
+  },
+  "interpreterRepositories": [
+    {
+      "id": "central",
+      "type": "default",
+      "url": "https://repo1.maven.org/maven2/",
+      "host": "repo1.maven.org",
+      "protocol": "https",
+      "releasePolicy": {
+        "enabled": true,
+        "updatePolicy": "daily",
+        "checksumPolicy": "warn"
+      },
+      "snapshotPolicy": {
+        "enabled": true,
+        "updatePolicy": "daily",
+        "checksumPolicy": "warn"
+      },
+      "mirroredRepositories": [],
+      "repositoryManager": false
+    },
+    {
+      "id": "local",
+      "type": "default",
+      "url": "file:///root/.m2/repository",
+      "host": "",
+      "protocol": "file",
+      "releasePolicy": {
+        "enabled": true,
+        "updatePolicy": "daily",
+        "checksumPolicy": "warn"
+      },
+      "snapshotPolicy": {
+        "enabled": true,
+        "updatePolicy": "daily",
+        "checksumPolicy": "warn"
+      },
+      "mirroredRepositories": [],
+      "repositoryManager": false
+    },
+    {
+      "id": "central",
+      "type": "default",
+      "url": "http://repo1.maven.org/maven2/",
+      "releasePolicy": {
+        "enabled": true,
+        "updatePolicy": "daily",
+        "checksumPolicy": "warn"
+      },
+      "snapshotPolicy": {
+        "enabled": true,
+        "updatePolicy": "daily",
+        "checksumPolicy": "warn"
+      },
+      "mirroredRepositories": [],
+      "repositoryManager": false
+    }
+  ]
+}

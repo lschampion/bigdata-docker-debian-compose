@@ -1,0 +1,31 @@
+Spark Command: /usr/lib/jvm/java-1.8-openjdk/bin/java -cp /usr/spark/conf/:/usr/spark/jars/*:/usr/hadoop/etc/hadoop/:/usr/hadoop/share/hadoop/tools/lib/*:/usr/hadoop/share/hadoop/common/lib/*:/usr/hadoop/share/hadoop/common/*:/usr/hadoop/share/hadoop/hdfs/:/usr/hadoop/share/hadoop/hdfs/lib/*:/usr/hadoop/share/hadoop/hdfs/*:/usr/hadoop/share/hadoop/mapreduce/lib/*:/usr/hadoop/share/hadoop/mapreduce/*:/usr/hadoop/share/hadoop/yarn/:/usr/hadoop/share/hadoop/yarn/lib/*:/usr/hadoop/share/hadoop/yarn/* -Xmx1g org.apache.spark.deploy.master.Master --host 172.28.1.1 --port 7077 --webui-port 8080 -h master
+========================================
+2022-03-01 06:30:28,933 INFO master.Master: Started daemon with process name: 1686@master
+2022-03-01 06:30:28,946 INFO util.SignalUtils: Registered signal handler for TERM
+2022-03-01 06:30:28,948 INFO util.SignalUtils: Registered signal handler for HUP
+2022-03-01 06:30:28,948 INFO util.SignalUtils: Registered signal handler for INT
+2022-03-01 06:30:29,606 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2022-03-01 06:30:29,934 INFO spark.SecurityManager: Changing view acls to: root
+2022-03-01 06:30:29,935 INFO spark.SecurityManager: Changing modify acls to: root
+2022-03-01 06:30:29,938 INFO spark.SecurityManager: Changing view acls groups to: 
+2022-03-01 06:30:29,940 INFO spark.SecurityManager: Changing modify acls groups to: 
+2022-03-01 06:30:29,941 INFO spark.SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(root); groups with view permissions: Set(); users  with modify permissions: Set(root); groups with modify permissions: Set()
+2022-03-01 06:30:30,505 INFO util.Utils: Successfully started service 'sparkMaster' on port 7077.
+2022-03-01 06:30:30,552 INFO master.Master: Starting Spark master at spark://master:7077
+2022-03-01 06:30:30,556 INFO master.Master: Running Spark version 2.4.5
+2022-03-01 06:30:30,645 INFO util.log: Logging initialized @2839ms
+2022-03-01 06:30:30,718 INFO server.Server: jetty-9.3.z-SNAPSHOT, build timestamp: 2018-06-06T01:11:56+08:00, git hash: 84205aa28f11a4f31f2a3b86d1bba2cc8ab69827
+2022-03-01 06:30:30,740 INFO server.Server: Started @2936ms
+2022-03-01 06:30:30,819 INFO server.AbstractConnector: Started ServerConnector@4989c271{HTTP/1.1,[http/1.1]}{172.28.1.1:8080}
+2022-03-01 06:30:30,820 INFO util.Utils: Successfully started service 'MasterUI' on port 8080.
+2022-03-01 06:30:30,868 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@4a2c7dc2{/app,null,AVAILABLE,@Spark}
+2022-03-01 06:30:30,870 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@637026ed{/app/json,null,AVAILABLE,@Spark}
+2022-03-01 06:30:30,871 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@19e13719{/,null,AVAILABLE,@Spark}
+2022-03-01 06:30:30,876 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@552c3289{/json,null,AVAILABLE,@Spark}
+2022-03-01 06:30:30,888 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@45658eca{/static,null,AVAILABLE,@Spark}
+2022-03-01 06:30:30,889 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@66f18c56{/app/kill,null,AVAILABLE,@Spark}
+2022-03-01 06:30:30,890 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@5895dbcf{/driver/kill,null,AVAILABLE,@Spark}
+2022-03-01 06:30:30,894 INFO ui.MasterWebUI: Bound MasterWebUI to 172.28.1.1, and started at http://localhost:8080
+2022-03-01 06:30:31,106 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@6d85454c{/metrics/master/json,null,AVAILABLE,@Spark}
+2022-03-01 06:30:31,108 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@259d861{/metrics/applications/json,null,AVAILABLE,@Spark}
+2022-03-01 06:30:31,147 INFO master.Master: I have been elected leader! New state: ALIVE
