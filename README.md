@@ -1,4 +1,4 @@
-# Big data playground: Cluster with Hadoop, Hive, Spark, HBase, Zeppelin and Livy via Docker-compose.
+# Big data playground: Cluster with Hadoop, Hive, Spark, HBase, Sqoop, Zeppelin and Livy via Docker-compose.
 
 I wanted to have the ability to play around with various big data
 applications as effortlessly as possible,
@@ -737,6 +737,79 @@ Response:
 
 
 
+### Sqoop
+
+```shell
+#  --schema 一定要放在后面，否则可能导致无运行日志或无法导入数据到指定目录且无法重新执行（报目录已存在）
+# PostgreSQL 须设置SET standard_conforming_strings = on;，否则--null-string和--null-non-string不起作用；
+#  --null-string和--null-non-string放在-- --schema后面，否则执行时报Can't parse input data: '\N'
+
+# list-databases 用于显示某个连接上所有数据库，也可以直接使用sqoop-list-databases
+sqoop list-databases \
+--connect jdbc:postgresql://hivemetastore:5432/pgdata --username pguser --password 123456
+
+# list-tables用于显示某个数据库中的所有表：
+sqoop list-tables \
+--connect jdbc:postgresql://hivemetastore:5432/pgdata --username pguser --password 123456 \
+-- --schema "pguser_public" 
+
+# eval 用于执行一个 sql 语句， 并将结果输出到控制台
+sqoop eval \
+--connect jdbc:postgresql://hivemetastore:5432/pgdata --username pguser --password 123456 \
+--query "select * from pguser_public.course"
+
+
+# 数据从数据库导出到HDFS
+# -Dorg.apache.sqoop.splitter.allow_text_splitter=true 针对原表cid的字符串类型报错而添加
+sqoop import -Dorg.apache.sqoop.splitter.allow_text_splitter=true 
+--connect jdbc:postgresql://hivemetastore:5432/pgdata \
+--username pguser --password 123456 \
+--table course \
+--target-dir /course_export \
+--delete-target-dir \
+--fields-terminated-by '\t' \
+--lines-terminated-by '\n' \
+--split-by cid \
+-- --schema pguser_public 
+
+# 查看已经导出的文件
+hdfs dfs -ls /course_export
+hdfs dfs -cat /course_export/*
+
+#  --schema 一定要放在后面，否则可能导致无运行日志或无法导入数据到指定目录且无法重新执行（报目录已存在）
+# PostgreSQL 须设置SET standard_conforming_strings = on;，否则--null-string和--null-non-string不起作用；
+#  --null-string和--null-non-string放在-- --schema后面，否则执行时报Can't parse input data: '\N'
+# 可以增加如下作为空字符串和空的非字符串标识方法
+#--null-string含义是 string类型的字段，当Value是NULL，替换成指定的字符，该例子中为@@@
+#--null-non-string 含义是非string类型的字段，当Value是NULL，替换成指定字符，该例子中为###
+
+#导入数据库到HIVE表；
+# (1)导入已经存在的表。
+# 在hive执行：create external table course_hive(cid string,cname string,tid string)row format delimited fields terminated by '\t';
+# (2)以不需要提前创建hive表，会自动创建。
+sqoop import -Dorg.apache.sqoop.splitter.allow_text_splitter=true \
+--connect jdbc:postgresql://hivemetastore:5432/pgdata \
+--username pguser --password 123456 \
+--table course \
+--fields-terminated-by '\t' \
+--lines-terminated-by '\n' \
+--hive-import \
+--hive-table course_hive \
+--hive-overwrite \
+--split-by cid \
+-- --schema pguser_public 
+
+# 测试导出结果
+hive> select * from course_hive;
+# OK
+# 01      语文    02
+# 02      数学    01
+# 03      英语    03
+# Time taken: 4.71 seconds, Fetched: 3 row(s)
+```
+
+
+
 ### HBase
 
 Open up [HBase Master Web UI (localhost:16010)](http://localhost:16010/):
@@ -758,7 +831,7 @@ put 'tbl_user', 'mengday', 'info:age', '28'
 scan 'tbl_user'
 ```
 
-ThriftServer is deloyed on worker2. python (etc APIs) may connect this service.
+ThriftServer is deloyed on worker2. python (etc other APIs) may connect it for service.
 
 ### Postgres
 
