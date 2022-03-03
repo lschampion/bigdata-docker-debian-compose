@@ -800,7 +800,8 @@ sqoop import -Dorg.apache.sqoop.splitter.allow_text_splitter=true \
 -- --schema pguser_public 
 
 # 测试导出结果
-hive> select * from course_hive;
+hive
+select * from course_hive;
 # OK
 # 01      语文    02
 # 02      数学    01
