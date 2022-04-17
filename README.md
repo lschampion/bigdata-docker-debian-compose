@@ -139,8 +139,13 @@ Open up a shell in the master node.
 ```bash
 docker-compose exec master bash
 jps
+# check service status directly
+docker-compose exec master jps
+docker-compose exec worker1 jps
+docker-compose exec worker2 jps
 ```
 `jps` command outputs a list of running Java processes,
+
 which on Hadoop Namenode/Spark Master node should include those:
 
 <pre>
@@ -155,7 +160,6 @@ which on Hadoop Namenode/Spark Master node should include those:
 2926 Jps
 895 RunJar
 </pre>
-
 ... but not necessarily in this order and those IDs,
 also some extras like `RunJar` and `JobHistoryServer` might be there too.
 
@@ -227,6 +231,8 @@ ThriftServer may only be checked on worker2
 
 ### Hive
 
+defaut enginte TEZ
+
 Prerequisite: there's a file `grades.csv` stored in HDFS ( `hadoop fs -put /data/grades.csv /` )
 ```bash
 docker-compose exec master bash
@@ -294,6 +300,8 @@ SELECT * FROM grades;
 ```
 You should be able to see the same table.
 ### Spark
+
+sparksql read hive table enabled
 
 Open up [Spark Master Web UI (localhost:8080)](http://localhost:8080/):
 <pre>
@@ -481,6 +489,15 @@ $FLINK_HOME/bin/stop-cluster.sh
 # 如下两个命令无法成功运行
  #docker-compose exec master /usr/program/flink/bin/start-cluster.sh
  #docker-compose exec master /usr/program/flink/bin/stop-cluster.sh
+```
+
+Check Flink Cluster Status
+
+```shell
+# exec jps on master, process blow should show
+StandaloneSessionClusterEntrypoint
+# exec jps on worker1 or worker2, process blow should show
+TaskManagerRunner
 ```
 
 测试wordcount
