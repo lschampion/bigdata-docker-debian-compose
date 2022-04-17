@@ -99,7 +99,7 @@ services:
       - "zoo3:172.28.1.13"
       
   master:
-    image: lisacumt/hadoop-hive-hbase-spark-docker:1.1.1
+    image: lisacumt/hadoop-hive-hbase-spark-docker:1.1.2
 #    build: '../hadoop-hive-spark-docker'
     hostname: master
     depends_on:
@@ -134,6 +134,8 @@ services:
       - 18080:18080
       # YARN UI
       - 8088:8088
+      # YARN LOG SERVER UI
+      - 19888:19888
       # Hadoop namenode UI
       - 9870:9870
       # Hadoop secondary namenode UI
@@ -164,7 +166,7 @@ services:
       - "zoo3:172.28.1.13"
 
   worker1:
-    image: lisacumt/hadoop-hive-hbase-spark-docker:1.1.1
+    image: lisacumt/hadoop-hive-hbase-spark-docker:1.1.2
 #    build: '../hadoop-hive-spark-docker'
     hostname: worker1
     depends_on:
@@ -192,6 +194,8 @@ services:
       - 9864:9864
       #Spark worker UI
       - 8081:8081
+      # Spark Job UI
+      - 8101:8042
     volumes:
       - ./data:/data
       - data_share:/data_share
@@ -214,7 +218,7 @@ services:
       - "zoo3:172.28.1.13"
 
   worker2:
-    image: lisacumt/hadoop-hive-hbase-spark-docker:1.1.1
+    image: lisacumt/hadoop-hive-hbase-spark-docker:1.1.2
 #    build: '../hadoop-hive-spark-docker'
     hostname: worker2
     depends_on:
@@ -242,6 +246,8 @@ services:
       - 9865:9865
       # Spark worker UI
       - 8082:8082
+      # Spark Job UI
+      - 8102:8042
     volumes:
       - ./data:/data
       - data_share:/data_share
@@ -264,7 +270,7 @@ services:
       - "zoo3:172.28.1.13"
 
   livy:
-    image: lisacumt/livy-bigdata-docker:1.1.1
+    image: lisacumt/livy-bigdata-docker:1.1.2
 #    build: '../livy-docker'
     hostname: livy
     depends_on:
@@ -306,7 +312,7 @@ services:
 
 
   zeppelin:
-    image:  lisacumt/zeppelin-bigdata-docker:1.1.1
+    image:  lisacumt/zeppelin-bigdata-docker:1.1.2
 #    build: '../zeppelin-bigdata-docker'
     hostname: zeppelin
     depends_on:
