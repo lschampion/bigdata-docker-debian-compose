@@ -1,10 +1,32 @@
-# Big data playground: Cluster with Hadoop, Hive, Spark, HBase, Sqoop, Zeppelin and Livy via Docker-compose.
+# Big data playground: Cluster with Hadoop, Hive, Spark, Flink,HBase, Sqoop, Zeppelin and Livy via Docker-compose.
 
 I wanted to have the ability to play around with various big data
 applications as effortlessly as possible,
 namely those found in Amazon EMR.
 Ideally, that would be something that can be brought up and torn down
 in one command. This is how this repository came to be!
+
+## ABOUT VERSION
+
+HADOOP: 3.2.3
+
+HIVE: 3.1.2
+
+HBASE: 2.3.6
+
+SPARK: 3.0.0
+
+FLINK: 1.13.6
+
+LIVY: 0.8.0 complied by myself
+
+ZEPPELIN: 0.10.1
+
+SQOOP: 1.4.7
+
+TEZ: 0.9.2
+
+SCALA: 2.12
 
 ## Constituent images:
 
@@ -438,6 +460,78 @@ None of the commands above stores your credentials anywhere
 persistent ways of storing the credentials are out of scope of this
 readme.
 
+
+
+### Flink
+
+Flink cluster and on yarn mode are both supported
+
+ref: [Flink集群部署详细步骤](https://www.jianshu.com/p/c47e8f438291)
+
+#### Cluster Mode
+
+任务和资源分配有Flink自有集群完成
+
+```shell
+# 进入master shell窗口
+docker-compose exec master bash
+# 启动或者停止集群
+$FLINK_HOME/bin/start-cluster.sh
+$FLINK_HOME/bin/stop-cluster.sh
+# 如下两个命令无法成功运行
+ #docker-compose exec master /usr/program/flink/bin/start-cluster.sh
+ #docker-compose exec master /usr/program/flink/bin/stop-cluster.sh
+```
+
+测试wordcount
+
+```shell
+# 必须在start-cluster.sh启动以后执行
+rm -rf /data/input.txt
+bin/flink run examples/batch/WordCount.jar  --input /data/input.txt --output /data/output.txt
+cat /data/output.txt
+```
+
+Flink web UI hould be available at http://localhost:45080
+
+#### On YARN Mode
+
+#### 1. 以集群模式提交任务，每次都会新建flink集群
+
+```shell
+$FLINK_HOME/bin/flink run -c 入口类名  Jar包 参数 ...
+```
+
+运行监控可以在yarn 管理页面查看，而其flink web ui 在yarn 页面最右侧的 ApplicationMaster 链接中
+
+#### 2.启动Session flink集群，提交任务
+
+(1) 启动一个YARN session用2个TaskManager（每个TaskManager分配1GB的堆空间）
+
+```shell
+$FLINK_HOME/bin/yarn-session.sh -n 2 -jm 1024 -tm 1024 -s 2
+```
+
+(2)  YARN session启动之后就可以使用bin/flink来启动提交作业
+
+```SHELL
+# 此时任务会自动通过flink的YARN session 推送至YARN执行
+$FLINK_HOME/bin/flink run -c 入口类名  Jar包 参数 ...
+```
+
+后台 yarn session
+
+如果你不希望flink yarn client一直运行，也可以启动一个后台运行的yarn session。使用这个参数：-d 或者 --detached
+
+在这种情况下，flink yarn client将会只提交任务到集群然后关闭自己。注意：在这种情况下，无法使用flink停止yarn session。
+使用yarn 工具 来停止yarn session
+
+需要在 yarn 管理页面查看<applicationId> 
+
+```bash
+yarn application -kill <applicationId> 
+```
+
 ### Zeppelin
 
 Zeppelin interface should be available at [http://localhost:8890](http://localhost:8890).
@@ -836,7 +930,7 @@ ThriftServer is deloyed on worker2. python (etc other APIs) may connect it for s
 
 ### Postgres
 
-open 5431 port for postgre, using JDBC to access the database.
+open 5432 port for postgre, using JDBC to access the database.
 
 create user `pguser` using password `123456`
 
