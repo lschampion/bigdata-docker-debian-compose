@@ -3,7 +3,7 @@
     {
       "text": "%sh\n\n#Only load a file to HDFS if it\u0027s not already there - because of this you can run all paragraphs as many times as you like.\nhadoop fs -test -e /grades.csv\n\nif ! hadoop fs -test -e /grades.csv\nthen\n    echo \"*******************************************\"\n    echo \"grades.csv is not in HDFS yet! Uploading...\"\n    echo \"*******************************************\"d\n    hadoop fs -put /data/grades.csv /\nfi",
       "user": "anonymous",
-      "dateUpdated": "2022-04-16 16:00:15.225",
+      "dateUpdated": "2022-04-17 05:21:03.375",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -27,7 +27,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "SLF4J: Class path contains multiple SLF4J bindings.\nSLF4J: Found binding in [jar:file:/usr/program/hadoop/share/hadoop/common/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]\nSLF4J: Found binding in [jar:file:/usr/program/tez/lib/slf4j-log4j12-1.7.10.jar!/org/slf4j/impl/StaticLoggerBinder.class]\nSLF4J: Found binding in [jar:file:/usr/program/hive/lib/log4j-slf4j-impl-2.10.0.jar!/org/slf4j/impl/StaticLoggerBinder.class]\nSLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.\nSLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]\n2022-04-16 16:00:19,042 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable\nSLF4J: Class path contains multiple SLF4J bindings.\nSLF4J: Found binding in [jar:file:/usr/program/hadoop/share/hadoop/common/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]\nSLF4J: Found binding in [jar:file:/usr/program/tez/lib/slf4j-log4j12-1.7.10.jar!/org/slf4j/impl/StaticLoggerBinder.class]\nSLF4J: Found binding in [jar:file:/usr/program/hive/lib/log4j-slf4j-impl-2.10.0.jar!/org/slf4j/impl/StaticLoggerBinder.class]\nSLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.\nSLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]\n2022-04-16 16:00:21,292 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable\n"
+            "data": "SLF4J: Class path contains multiple SLF4J bindings.\nSLF4J: Found binding in [jar:file:/usr/program/hadoop/share/hadoop/common/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]\nSLF4J: Found binding in [jar:file:/usr/program/tez/lib/slf4j-log4j12-1.7.10.jar!/org/slf4j/impl/StaticLoggerBinder.class]\nSLF4J: Found binding in [jar:file:/usr/program/hive/lib/log4j-slf4j-impl-2.10.0.jar!/org/slf4j/impl/StaticLoggerBinder.class]\nSLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.\nSLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]\n2022-04-17 05:21:11,070 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable\nSLF4J: Class path contains multiple SLF4J bindings.\nSLF4J: Found binding in [jar:file:/usr/program/hadoop/share/hadoop/common/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]\nSLF4J: Found binding in [jar:file:/usr/program/tez/lib/slf4j-log4j12-1.7.10.jar!/org/slf4j/impl/StaticLoggerBinder.class]\nSLF4J: Found binding in [jar:file:/usr/program/hive/lib/log4j-slf4j-impl-2.10.0.jar!/org/slf4j/impl/StaticLoggerBinder.class]\nSLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.\nSLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]\n2022-04-17 05:21:14,762 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable\n*******************************************\ngrades.csv is not in HDFS yet! Uploading...\n*******************************************d\nSLF4J: Class path contains multiple SLF4J bindings.\nSLF4J: Found binding in [jar:file:/usr/program/hadoop/share/hadoop/common/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]\nSLF4J: Found binding in [jar:file:/usr/program/tez/lib/slf4j-log4j12-1.7.10.jar!/org/slf4j/impl/StaticLoggerBinder.class]\nSLF4J: Found binding in [jar:file:/usr/program/hive/lib/log4j-slf4j-impl-2.10.0.jar!/org/slf4j/impl/StaticLoggerBinder.class]\nSLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.\nSLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]\n2022-04-17 05:21:16,894 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable\n"
           }
         ]
       },
@@ -37,14 +37,14 @@
       "jobName": "paragraph_1646274983838_2137241335",
       "id": "paragraph_1646190869576_761249469",
       "dateCreated": "2022-03-03 02:36:23.838",
-      "dateStarted": "2022-04-16 16:00:15.258",
-      "dateFinished": "2022-04-16 16:00:22.298",
+      "dateStarted": "2022-04-17 05:21:03.436",
+      "dateFinished": "2022-04-17 05:21:18.567",
       "status": "FINISHED"
     },
     {
       "text": "%sh\n\nhadoop fs -ls /",
       "user": "anonymous",
-      "dateUpdated": "2022-04-16 16:00:28.049",
+      "dateUpdated": "2022-04-17 05:21:49.984",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -68,7 +68,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "SLF4J: Class path contains multiple SLF4J bindings.\nSLF4J: Found binding in [jar:file:/usr/program/hadoop/share/hadoop/common/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]\nSLF4J: Found binding in [jar:file:/usr/program/tez/lib/slf4j-log4j12-1.7.10.jar!/org/slf4j/impl/StaticLoggerBinder.class]\nSLF4J: Found binding in [jar:file:/usr/program/hive/lib/log4j-slf4j-impl-2.10.0.jar!/org/slf4j/impl/StaticLoggerBinder.class]\nSLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.\nSLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]\n2022-04-16 16:00:29,264 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable\nFound 7 items\n-rw-r--r--   1 root supergroup        747 2022-04-16 15:48 /grades.csv\ndrwxr-xr-x   - root supergroup          0 2022-04-16 15:42 /log\ndrwxr-xr-x   - root supergroup          0 2022-04-16 15:44 /spark-jars\ndrwxr-xr-x   - root supergroup          0 2022-04-16 15:44 /tez\ndrwx------   - root supergroup          0 2022-04-16 15:48 /tmp\ndrwxrwx---   - root supergroup          0 2022-04-16 15:43 /user\ndrwxr-xr-x   - root supergroup          0 2022-04-16 15:47 /usr\n"
+            "data": "SLF4J: Class path contains multiple SLF4J bindings.\nSLF4J: Found binding in [jar:file:/usr/program/hadoop/share/hadoop/common/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]\nSLF4J: Found binding in [jar:file:/usr/program/tez/lib/slf4j-log4j12-1.7.10.jar!/org/slf4j/impl/StaticLoggerBinder.class]\nSLF4J: Found binding in [jar:file:/usr/program/hive/lib/log4j-slf4j-impl-2.10.0.jar!/org/slf4j/impl/StaticLoggerBinder.class]\nSLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.\nSLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]\n2022-04-17 05:21:51,322 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable\nFound 6 items\n-rw-r--r--   1 root supergroup        747 2022-04-17 05:21 /grades.csv\ndrwxr-xr-x   - root supergroup          0 2022-04-17 05:16 /log\ndrwxr-xr-x   - root supergroup          0 2022-04-17 05:17 /spark-jars\ndrwxr-xr-x   - root supergroup          0 2022-04-17 05:17 /tez\ndrwx-wx-wx   - root supergroup          0 2022-04-17 05:19 /tmp\ndrwxrwx---   - root supergroup          0 2022-04-17 05:17 /user\n"
           }
         ]
       },
@@ -78,14 +78,14 @@
       "jobName": "paragraph_1646274983839_905369701",
       "id": "paragraph_1646190869577_987705583",
       "dateCreated": "2022-03-03 02:36:23.839",
-      "dateStarted": "2022-04-16 16:00:28.057",
-      "dateFinished": "2022-04-16 16:00:30.326",
+      "dateStarted": "2022-04-17 05:21:49.993",
+      "dateFinished": "2022-04-17 05:21:52.495",
       "status": "FINISHED"
     },
     {
       "text": "%jdbc\n\n-- Does not support more than one statement per paragraph, it seems. Same goes for semicolon at the end of statements - errors out if you include it.\nDROP TABLE IF EXISTS grades",
       "user": "anonymous",
-      "dateUpdated": "2022-04-16 15:47:29.411",
+      "dateUpdated": "2022-04-17 05:21:55.039",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -119,14 +119,14 @@
       "jobName": "paragraph_1646274983839_505401481",
       "id": "paragraph_1646190869577_409561374",
       "dateCreated": "2022-03-03 02:36:23.839",
-      "dateStarted": "2022-04-16 15:47:29.423",
-      "dateFinished": "2022-04-16 15:47:34.000",
+      "dateStarted": "2022-04-17 05:21:55.047",
+      "dateFinished": "2022-04-17 05:22:01.581",
       "status": "FINISHED"
     },
     {
       "text": "%jdbc\n\nCREATE TABLE grades(\n    `Last name` STRING,\n    `First name` STRING,\n    `SSN` STRING,\n    `Test1` DOUBLE,\n    `Test2` INT,\n    `Test3` DOUBLE,\n    `Test4` DOUBLE,\n    `Final` DOUBLE,\n    `Grade` STRING)\nCOMMENT \u0027https://people.sc.fsu.edu/~jburkardt/data/csv/csv.html\u0027\nROW FORMAT DELIMITED\nFIELDS TERMINATED BY \u0027,\u0027\nSTORED AS TEXTFILE\ntblproperties(\"skip.header.line.count\"\u003d\"1\")",
       "user": "anonymous",
-      "dateUpdated": "2022-04-16 15:47:50.458",
+      "dateUpdated": "2022-04-17 05:22:05.541",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -150,11 +150,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "INFO  : Compiling command(queryId\u003droot_20220416154750_3d8fe319-1b7e-4a5b-b76d-19cd33463a0a): \n\nCREATE TABLE grade\n"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query exes(\n    `Last name` STRING,\n    `First name` STRING,\n    `SSN` STRING,c\n    `Test1` DOUBLE,\n    `Test2` INT,\n    `Test3` DOUBLE,\n    `Test4` DOUBLE,\n    `Final` DOUBLE,\n u t e d` Gsruacdcee`s sSfTuRlIlNyG.) \nCOMMENT \u0027https://people.sc.fsu.eduA/~jburkafrfdetc/tdeadt ar/ocwssv /:c s-v1.\nhtml\u0027\nROW FORMAT DELIMITED\nFIELDS TERMINATED BY \u0027,\u0027\nSTORED AS TEXTFILE\ntblproperties(\"skip.header.line.count\"\u003d\"1\")\nINFO  : Concurrency mode is disabled, not creating a lock manager\nINFO  : Semantic Analysis Completed (retrial \u003d false)\nINFO  : Returning Hive schema: Schema(fieldSchemas:null, properties:null)\nINFO  : Completed compiling command(queryId\u003droot_20220416154750_3d8fe319-1b7e-4a5b-b76d-19cd33463a0a); Time taken: 0.264 seconds\nINFO  : Concurrency mode is disabled, not creating a lock manager\nINFO  : Executing command(queryId\u003droot_20220416154750_3d8f"
+            "data": "Query executed successfully. Affected rows : -1\n"
           }
         ]
       },
@@ -164,14 +160,14 @@
       "jobName": "paragraph_1646274983840_1199882173",
       "id": "paragraph_1646190869577_1137362447",
       "dateCreated": "2022-03-03 02:36:23.840",
-      "dateStarted": "2022-04-16 15:47:50.466",
-      "dateFinished": "2022-04-16 15:47:52.574",
+      "dateStarted": "2022-04-17 05:22:05.546",
+      "dateFinished": "2022-04-17 05:22:08.154",
       "status": "FINISHED"
     },
     {
       "text": "%jdbc\n\nLOAD DATA INPATH \u0027/grades.csv\u0027 INTO TABLE grades",
       "user": "anonymous",
-      "dateUpdated": "2022-04-16 15:48:05.042",
+      "dateUpdated": "2022-04-17 05:22:20.416",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -205,14 +201,14 @@
       "jobName": "paragraph_1646274983840_242464875",
       "id": "paragraph_1646190869577_1770491614",
       "dateCreated": "2022-03-03 02:36:23.840",
-      "dateStarted": "2022-04-16 15:48:05.048",
-      "dateFinished": "2022-04-16 15:48:06.208",
+      "dateStarted": "2022-04-17 05:22:20.422",
+      "dateFinished": "2022-04-17 05:22:21.539",
       "status": "FINISHED"
     },
     {
       "text": "%jdbc\n\n-- select * from grades;\n-- set hive.execution.engine\u003dmr;\nSELECT grade,count(1) sl FROM grades group by grade;",
       "user": "anonymous",
-      "dateUpdated": "2022-04-16 16:01:39.577",
+      "dateUpdated": "2022-04-17 05:22:24.242",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -275,14 +271,14 @@
       "jobName": "paragraph_1646274983840_110646290",
       "id": "paragraph_1646190869577_1331104341",
       "dateCreated": "2022-03-03 02:36:23.840",
-      "dateStarted": "2022-04-16 16:01:04.161",
-      "dateFinished": "2022-04-16 16:01:31.351",
+      "dateStarted": "2022-04-17 05:22:24.248",
+      "dateFinished": "2022-04-17 05:22:55.577",
       "status": "FINISHED"
     },
     {
       "text": "%sh\n\n# Take a look at the warehouse directory, specifically where our Hive table is stored.\n hadoop fs -ls /usr/hive/warehouse/grades",
       "user": "anonymous",
-      "dateUpdated": "2022-04-16 15:48:49.382",
+      "dateUpdated": "2022-04-17 05:23:03.405",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -306,7 +302,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "SLF4J: Class path contains multiple SLF4J bindings.\nSLF4J: Found binding in [jar:file:/usr/program/hadoop/share/hadoop/common/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]\nSLF4J: Found binding in [jar:file:/usr/program/tez/lib/slf4j-log4j12-1.7.10.jar!/org/slf4j/impl/StaticLoggerBinder.class]\nSLF4J: Found binding in [jar:file:/usr/program/hive/lib/log4j-slf4j-impl-2.10.0.jar!/org/slf4j/impl/StaticLoggerBinder.class]\nSLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.\nSLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]\n2022-04-16 15:48:51,805 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable\nFound 1 items\n-rw-r--r--   1 root supergroup        747 2022-04-16 15:47 /usr/hive/warehouse/grades/grades.csv\n"
+            "data": "SLF4J: Class path contains multiple SLF4J bindings.\nSLF4J: Found binding in [jar:file:/usr/program/hadoop/share/hadoop/common/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]\nSLF4J: Found binding in [jar:file:/usr/program/tez/lib/slf4j-log4j12-1.7.10.jar!/org/slf4j/impl/StaticLoggerBinder.class]\nSLF4J: Found binding in [jar:file:/usr/program/hive/lib/log4j-slf4j-impl-2.10.0.jar!/org/slf4j/impl/StaticLoggerBinder.class]\nSLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.\nSLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]\n2022-04-17 05:23:06,248 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable\nFound 1 items\n-rw-r--r--   1 root supergroup        747 2022-04-17 05:21 /usr/hive/warehouse/grades/grades.csv\n"
           }
         ]
       },
@@ -316,14 +312,14 @@
       "jobName": "paragraph_1646274983840_1857387149",
       "id": "paragraph_1646190869577_330115865",
       "dateCreated": "2022-03-03 02:36:23.840",
-      "dateStarted": "2022-04-16 15:48:49.390",
-      "dateFinished": "2022-04-16 15:48:53.735",
+      "dateStarted": "2022-04-17 05:23:03.413",
+      "dateFinished": "2022-04-17 05:23:08.495",
       "status": "FINISHED"
     },
     {
       "text": "%sh\n\n# Put the file back into HDFS - it was moved to warehouse directory when we loaded it with Hive.\nhadoop fs -put /data/grades.csv /\nhadoop fs -ls /",
       "user": "anonymous",
-      "dateUpdated": "2022-04-16 15:48:56.032",
+      "dateUpdated": "2022-04-17 05:23:18.444",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -347,7 +343,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "SLF4J: Class path contains multiple SLF4J bindings.\nSLF4J: Found binding in [jar:file:/usr/program/hadoop/share/hadoop/common/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]\nSLF4J: Found binding in [jar:file:/usr/program/tez/lib/slf4j-log4j12-1.7.10.jar!/org/slf4j/impl/StaticLoggerBinder.class]\nSLF4J: Found binding in [jar:file:/usr/program/hive/lib/log4j-slf4j-impl-2.10.0.jar!/org/slf4j/impl/StaticLoggerBinder.class]\nSLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.\nSLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]\n2022-04-16 15:48:57,575 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable\nSLF4J: Class path contains multiple SLF4J bindings.\nSLF4J: Found binding in [jar:file:/usr/program/hadoop/share/hadoop/common/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]\nSLF4J: Found binding in [jar:file:/usr/program/tez/lib/slf4j-log4j12-1.7.10.jar!/org/slf4j/impl/StaticLoggerBinder.class]\nSLF4J: Found binding in [jar:file:/usr/program/hive/lib/log4j-slf4j-impl-2.10.0.jar!/org/slf4j/impl/StaticLoggerBinder.class]\nSLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.\nSLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]\n2022-04-16 15:49:00,794 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable\nFound 7 items\n-rw-r--r--   1 root supergroup        747 2022-04-16 15:48 /grades.csv\ndrwxr-xr-x   - root supergroup          0 2022-04-16 15:42 /log\ndrwxr-xr-x   - root supergroup          0 2022-04-16 15:44 /spark-jars\ndrwxr-xr-x   - root supergroup          0 2022-04-16 15:44 /tez\ndrwx------   - root supergroup          0 2022-04-16 15:48 /tmp\ndrwxrwx---   - root supergroup          0 2022-04-16 15:43 /user\ndrwxr-xr-x   - root supergroup          0 2022-04-16 15:47 /usr\n"
+            "data": "SLF4J: Class path contains multiple SLF4J bindings.\nSLF4J: Found binding in [jar:file:/usr/program/hadoop/share/hadoop/common/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]\nSLF4J: Found binding in [jar:file:/usr/program/tez/lib/slf4j-log4j12-1.7.10.jar!/org/slf4j/impl/StaticLoggerBinder.class]\nSLF4J: Found binding in [jar:file:/usr/program/hive/lib/log4j-slf4j-impl-2.10.0.jar!/org/slf4j/impl/StaticLoggerBinder.class]\nSLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.\nSLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]\n2022-04-17 05:23:19,783 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable\nSLF4J: Class path contains multiple SLF4J bindings.\nSLF4J: Found binding in [jar:file:/usr/program/hadoop/share/hadoop/common/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]\nSLF4J: Found binding in [jar:file:/usr/program/tez/lib/slf4j-log4j12-1.7.10.jar!/org/slf4j/impl/StaticLoggerBinder.class]\nSLF4J: Found binding in [jar:file:/usr/program/hive/lib/log4j-slf4j-impl-2.10.0.jar!/org/slf4j/impl/StaticLoggerBinder.class]\nSLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.\nSLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]\n2022-04-17 05:23:22,525 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable\nFound 7 items\n-rw-r--r--   1 root supergroup        747 2022-04-17 05:23 /grades.csv\ndrwxr-xr-x   - root supergroup          0 2022-04-17 05:16 /log\ndrwxr-xr-x   - root supergroup          0 2022-04-17 05:17 /spark-jars\ndrwxr-xr-x   - root supergroup          0 2022-04-17 05:17 /tez\ndrwx-wx-wx   - root supergroup          0 2022-04-17 05:19 /tmp\ndrwxrwx---   - root supergroup          0 2022-04-17 05:17 /user\ndrwxr-xr-x   - root supergroup          0 2022-04-17 05:22 /usr\n"
           }
         ]
       },
@@ -357,15 +353,15 @@
       "jobName": "paragraph_1646274983840_1790918675",
       "id": "paragraph_1646190869577_165553293",
       "dateCreated": "2022-03-03 02:36:23.840",
-      "dateStarted": "2022-04-16 15:48:56.038",
-      "dateFinished": "2022-04-16 15:49:01.964",
+      "dateStarted": "2022-04-17 05:23:18.448",
+      "dateFinished": "2022-04-17 05:23:23.756",
       "status": "FINISHED"
     },
     {
       "text": "%spark\n// use hivemetadata and read hdfs file directly\nspark.sql(\"select * from grades\").show()",
       "user": "anonymous",
-      "dateUpdated": "2022-04-16 16:02:04.336",
-      "progress": 0,
+      "dateUpdated": "2022-04-17 05:23:27.195",
+      "progress": 100,
       "config": {
         "editorSetting": {
           "language": "scala",
@@ -401,10 +397,10 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://zeppelin:4040/jobs/job?id\u003d1"
+              "jobUrl": "http://zeppelin:4040/jobs/job?id\u003d0"
             },
             {
-              "jobUrl": "http://zeppelin:4040/jobs/job?id\u003d2"
+              "jobUrl": "http://zeppelin:4040/jobs/job?id\u003d1"
             }
           ],
           "interpreterSettingId": "spark"
@@ -414,8 +410,8 @@
       "jobName": "paragraph_1650120939787_268513790",
       "id": "paragraph_1650120939787_268513790",
       "dateCreated": "2022-04-16 14:55:39.787",
-      "dateStarted": "2022-04-16 16:02:04.346",
-      "dateFinished": "2022-04-16 16:02:53.407",
+      "dateStarted": "2022-04-17 05:23:27.201",
+      "dateFinished": "2022-04-17 05:25:06.889",
       "status": "FINISHED"
     },
     {
@@ -668,7 +664,7 @@
     {
       "text": "%spark.pyspark\n\n# Check Python version - 2 not allowed.\nimport sys\nprint(sys.version)",
       "user": "anonymous",
-      "dateUpdated": "2022-04-16 15:52:19.690",
+      "dateUpdated": "2022-04-17 05:26:35.127",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -702,14 +698,14 @@
       "jobName": "paragraph_1646274983841_1773721208",
       "id": "paragraph_1646190869577_1175475651",
       "dateCreated": "2022-03-03 02:36:23.841",
-      "dateStarted": "2022-04-16 15:52:19.695",
-      "dateFinished": "2022-04-16 15:52:24.540",
+      "dateStarted": "2022-04-17 05:26:35.134",
+      "dateFinished": "2022-04-17 05:26:40.771",
       "status": "FINISHED"
     },
     {
       "text": "%spark.pyspark\n\n#  Basic Spark functions\nspark.range(1000 * 1000 * 1000).count()",
       "user": "anonymous",
-      "dateUpdated": "2022-04-16 15:52:30.398",
+      "dateUpdated": "2022-04-17 05:27:05.424",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -746,7 +742,7 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://zeppelin:4040/jobs/job?id\u003d6"
+              "jobUrl": "http://zeppelin:4040/jobs/job?id\u003d2"
             }
           ],
           "interpreterSettingId": "spark"
@@ -756,8 +752,8 @@
       "jobName": "paragraph_1646274983841_1962376825",
       "id": "paragraph_1646190869577_1865821110",
       "dateCreated": "2022-03-03 02:36:23.841",
-      "dateStarted": "2022-04-16 15:52:30.403",
-      "dateFinished": "2022-04-16 15:52:31.252",
+      "dateStarted": "2022-04-17 05:27:05.432",
+      "dateFinished": "2022-04-17 05:27:11.058",
       "status": "FINISHED"
     },
     {
@@ -877,7 +873,7 @@
     {
       "text": "%livy\n\n// Scala Spark over Livy\nspark.range(1000 * 1000 * 999).count()",
       "user": "anonymous",
-      "dateUpdated": "2022-04-16 16:17:03.673",
+      "dateUpdated": "2022-04-17 05:27:19.248",
       "progress": 66,
       "config": {
         "editorSetting": {
@@ -905,7 +901,7 @@
           },
           {
             "type": "HTML",
-            "data": "\u003chr/\u003eSpark Application Id: application_1650125618915_0002\u003cbr/\u003eSpark WebUI: \u003ca href\u003d\"http://master:8088/proxy/application_1650125618915_0002/\"\u003ehttp://master:8088/proxy/application_1650125618915_0002/\u003c/a\u003e"
+            "data": "\u003chr/\u003eSpark Application Id: application_1650172553302_0005\u003cbr/\u003eSpark WebUI: \u003ca href\u003d\"http://master:8088/proxy/application_1650172553302_0005/\"\u003ehttp://master:8088/proxy/application_1650172553302_0005/\u003c/a\u003e"
           }
         ]
       },
@@ -915,8 +911,8 @@
       "jobName": "paragraph_1646274983841_2145158676",
       "id": "paragraph_1646190869578_526130353",
       "dateCreated": "2022-03-03 02:36:23.841",
-      "dateStarted": "2022-04-16 16:17:03.704",
-      "dateFinished": "2022-04-16 16:18:05.835",
+      "dateStarted": "2022-04-17 05:27:19.254",
+      "dateFinished": "2022-04-17 05:29:03.122",
       "status": "FINISHED"
     },
     {

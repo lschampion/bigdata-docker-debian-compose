@@ -99,7 +99,7 @@ services:
       - "zoo3:172.28.1.13"
       
   master:
-    image: lisacumt/hadoop-hive-hbase-spark-docker:1.1.2
+    image: lisacumt/hadoop-hive-hbase-spark-docker:1.1.3
 #    build: '../hadoop-hive-spark-docker'
     hostname: master
     depends_on:
@@ -144,6 +144,10 @@ services:
       - 10000:10000
       # HBase UI
       - 16010:16010
+      # Flink UI
+      - 45080:45080
+      # Flink JobManager
+      - 10020:10020
     volumes:
       - ./data:/data
       - data_share:/data_share
@@ -151,6 +155,7 @@ services:
       - ./logs/hbase:/usr/program/hbase/logs
       - ./logs/hive:/usr/program/hive/logs
       - ./logs/spark:/usr/program/spark/logs
+      - ./logs/flink:/usr/program/flink/logs
     networks:
       spark_net:
         ipv4_address: 172.28.1.1
@@ -166,7 +171,7 @@ services:
       - "zoo3:172.28.1.13"
 
   worker1:
-    image: lisacumt/hadoop-hive-hbase-spark-docker:1.1.2
+    image: lisacumt/hadoop-hive-hbase-spark-docker:1.1.3
 #    build: '../hadoop-hive-spark-docker'
     hostname: worker1
     depends_on:
@@ -180,7 +185,7 @@ services:
       HBASE_REGIONSERVER_HOSTNAME: worker1 worker2
       SPARK_MASTER_ADDRESS: spark://master:7077
       SPARK_WORKER_PORT: 8881
-      SPARK_WORKER_WEBUI_PORT: 8081
+      SPARK_WORKER_WEBUI_PORT: 8981
       SPARK_PUBLIC_DNS: localhost
       SPARK_LOCAL_HOSTNAME: worker1
       SPARK_LOCAL_IP: 172.28.1.2
@@ -193,9 +198,11 @@ services:
       # Hadoop datanode UI
       - 9864:9864
       #Spark worker UI
-      - 8081:8081
+      - 8981:8981
       # Spark Job UI
       - 8101:8042
+      # Flink UI
+      - 45081:45080
     volumes:
       - ./data:/data
       - data_share:/data_share
@@ -218,7 +225,7 @@ services:
       - "zoo3:172.28.1.13"
 
   worker2:
-    image: lisacumt/hadoop-hive-hbase-spark-docker:1.1.2
+    image: lisacumt/hadoop-hive-hbase-spark-docker:1.1.3
 #    build: '../hadoop-hive-spark-docker'
     hostname: worker2
     depends_on:
@@ -231,7 +238,7 @@ services:
       HBASE_REGIONSERVER_HOSTNAME: worker1 worker2
       SPARK_MASTER_ADDRESS: spark://master:7077
       SPARK_WORKER_PORT: 8882
-      SPARK_WORKER_WEBUI_PORT: 8082
+      SPARK_WORKER_WEBUI_PORT: 8982
       SPARK_PUBLIC_DNS: localhost
       SPARK_LOCAL_HOSTNAME: worker2
       SPARK_LOCAL_IP: 172.28.1.3
@@ -245,9 +252,11 @@ services:
       # Hadoop datanode UI
       - 9865:9865
       # Spark worker UI
-      - 8082:8082
+      - 8982:8982
       # Spark Job UI
       - 8102:8042
+      # Flink UI
+      - 45082:45080
     volumes:
       - ./data:/data
       - data_share:/data_share
@@ -270,7 +279,7 @@ services:
       - "zoo3:172.28.1.13"
 
   livy:
-    image: lisacumt/livy-bigdata-docker:1.1.2
+    image: lisacumt/livy-bigdata-docker:1.1.3
 #    build: '../livy-docker'
     hostname: livy
     depends_on:
@@ -312,7 +321,7 @@ services:
 
 
   zeppelin:
-    image:  lisacumt/zeppelin-bigdata-docker:1.1.2
+    image:  lisacumt/zeppelin-bigdata-docker:1.1.3
 #    build: '../zeppelin-bigdata-docker'
     hostname: zeppelin
     depends_on:
