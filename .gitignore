@@ -7,4 +7,4 @@ data/batches/*
 
 # Spark job results
 data/output/
-logs/*
+/logs/*

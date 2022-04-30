@@ -26,6 +26,7 @@ services:
       - "worker2:172.28.1.3"
       - "hivemetastore:172.28.1.4"
       - "zeppelin:172.28.1.5"
+      - "livy:172.28.1.6"
       - "zoo1:172.28.1.11"
       - "zoo2:172.28.1.12"
       - "zoo3:172.28.1.13"
@@ -48,6 +49,7 @@ services:
       - "worker2:172.28.1.3"
       - "hivemetastore:172.28.1.4"
       - "zeppelin:172.28.1.5"
+      - "livy:172.28.1.6"
       - "zoo1:172.28.1.11"
       - "zoo2:172.28.1.12"
       - "zoo3:172.28.1.13"
@@ -69,6 +71,7 @@ services:
       - "worker2:172.28.1.3"
       - "hivemetastore:172.28.1.4"
       - "zeppelin:172.28.1.5"
+      - "livy:172.28.1.6"
       - "zoo1:172.28.1.11"
       - "zoo2:172.28.1.12"
       - "zoo3:172.28.1.13"
@@ -90,12 +93,13 @@ services:
       - "worker2:172.28.1.3"
       - "hivemetastore:172.28.1.4"
       - "zeppelin:172.28.1.5"
+      - "livy:172.28.1.6"
       - "zoo1:172.28.1.11"
       - "zoo2:172.28.1.12"
       - "zoo3:172.28.1.13"
       
   master:
-    image: lisacumt/hadoop-hive-hbase-spark-docker:1.1.6
+    image: lisacumt/hadoop-hive-hbase-spark-docker:1.1.5
 #    build: '../hadoop-hive-spark-docker'
     hostname: master
     depends_on:
@@ -115,16 +119,6 @@ services:
       SPARK_MASTER_HOST: 172.28.1.1
       SPARK_LOCAL_HOSTNAME: master
       ZOO_SERVERS_HOSTNAME: zoo1 zoo2 zoo3
-      # livy env
-      # Intentionally not specified - if it's set here, then we can't override it via REST API ("conf"={} map) Can be client or cluster
-      # - SPARK_DEPLOY_MODE=client
-      SPARK_MASTER: yarn
-      LOCAL_DIR_WHITELIST: /data/batches/
-      ENABLE_HIVE_CONTEXT: false
-      # Defaults are fine for variables below. Uncomment to change them.
-#     LIVY_HOST: 0.0.0.0
-#     LIVY_PORT: 8998
-      LIVY_SERVER: true
     expose:
       - 1-65535
     ports:
@@ -155,18 +149,14 @@ services:
       - 10020:10020
       # Trino
       - 28888:28888
-      # Livy Rest Port
-      - 8998:8998
     volumes:
       - ./data:/data
-      - ./data_share:/data_share
+      - data_share:/data_share
       - ./logs/hadoop:/usr/program/hadoop/logs
       - ./logs/hbase:/usr/program/hbase/logs
       - ./logs/hive:/usr/program/hive/logs
       - ./logs/spark:/usr/program/spark/logs
       - ./logs/flink:/usr/program/flink/logs
-      - ./logs/livy:/usr/program/livy/logs
-      - ./livy_batches:/livy_batches
     networks:
       spark_net:
         ipv4_address: 172.28.1.1
@@ -176,12 +166,13 @@ services:
       - "worker2:172.28.1.3"
       - "hivemetastore:172.28.1.4"
       - "zeppelin:172.28.1.5"
+      - "livy:172.28.1.6"
       - "zoo1:172.28.1.11"
       - "zoo2:172.28.1.12"
       - "zoo3:172.28.1.13"
 
   worker1:
-    image: lisacumt/hadoop-hive-hbase-spark-docker:1.1.6
+    image: lisacumt/hadoop-hive-hbase-spark-docker:1.1.5
 #    build: '../hadoop-hive-spark-docker'
     hostname: worker1
     depends_on:
@@ -215,6 +206,7 @@ services:
       - 45081:45080
     volumes:
       - ./data:/data
+      - data_share:/data_share
       - ./logs/hadoop:/usr/program/hadoop/logs
       - ./logs/hbase:/usr/program/hbase/logs
       - ./logs/hive:/usr/program/hive/logs
@@ -228,12 +220,13 @@ services:
       - "worker2:172.28.1.3"
       - "hivemetastore:172.28.1.4"
       - "zeppelin:172.28.1.5"
+      - "livy:172.28.1.6"
       - "zoo1:172.28.1.11"
       - "zoo2:172.28.1.12"
       - "zoo3:172.28.1.13"
 
   worker2:
-    image: lisacumt/hadoop-hive-hbase-spark-docker:1.1.6
+    image: lisacumt/hadoop-hive-hbase-spark-docker:1.1.5
 #    build: '../hadoop-hive-spark-docker'
     hostname: worker2
     depends_on:
@@ -267,6 +260,7 @@ services:
       - 45082:45080
     volumes:
       - ./data:/data
+      - data_share:/data_share
       - ./logs/hadoop:/usr/program/hadoop/logs
       - ./logs/hbase:/usr/program/hbase/logs
       - ./logs/hive:/usr/program/hive/logs
@@ -280,12 +274,55 @@ services:
       - "worker2:172.28.1.3"
       - "hivemetastore:172.28.1.4"
       - "zeppelin:172.28.1.5"
+      - "livy:172.28.1.6"
       - "zoo1:172.28.1.11"
       - "zoo2:172.28.1.12"
       - "zoo3:172.28.1.13"
 
+  livy:
+    image: lisacumt/livy-bigdata-docker:1.1.3
+#    build: '../livy-docker'
+    hostname: livy
+    depends_on:
+      - master
+      - worker1
+      - worker2
+    volumes:
+      - ./livy_batches:/livy_batches
+      - ./data:/data
+      - ./logs/livy:/usr/program/livy/logs
+    environment:
+      - SPARK_MASTER=yarn
+      # Intentionally not specified - if it's set here, then we can't override it
+      # via REST API ("conf"={} map)
+      # Can be client or cluster
+#      - SPARK_DEPLOY_MODE=client
+
+      - LOCAL_DIR_WHITELIST=/data/batches/
+      - ENABLE_HIVE_CONTEXT=false
+      # Defaults are fine for variables below. Uncomment to change them.
+#      - LIVY_HOST=0.0.0.0
+#      - LIVY_PORT=8998
+    expose:
+      - 1-65535
+    ports:
+      - 8998:8998
+    networks:
+      spark_net:
+        ipv4_address: 172.28.1.6
+    extra_hosts:
+      - "master:172.28.1.1"
+      - "worker1:172.28.1.2"
+      - "worker2:172.28.1.3"
+      - "hivemetastore:172.28.1.4"
+      - "zeppelin:172.28.1.5"
+      - "zoo1:172.28.1.11"
+      - "zoo2:172.28.1.12"
+      - "zoo3:172.28.1.13"
+
+
   zeppelin:
-    image:  lisacumt/zeppelin-bigdata-docker:1.1.6
+    image:  lisacumt/zeppelin-bigdata-docker:1.1.3
 #    build: '../zeppelin-bigdata-docker'
     hostname: zeppelin
     depends_on:
@@ -324,6 +361,7 @@ networks:
       driver: default
       config:
         - subnet: 172.28.0.0/16
+
 volumes:
   data_share:
 
