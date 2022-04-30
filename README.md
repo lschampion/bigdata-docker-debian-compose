@@ -28,6 +28,10 @@ TEZ: 0.9.2
 
 SCALA: 2.12
 
+Hudi: 0.10.0
+
+Trino: 378  not full supporedt, becasue hadoop native packages not installed for apline reason.
+
 ## Constituent images:
 
 fork from panovvv`s project,and add hbase service 
@@ -944,6 +948,79 @@ scan 'tbl_user'
 ```
 
 ThriftServer is deloyed on worker2. python (etc other APIs) may connect it for service.
+
+### Hudi
+
+https://hudi.apache.org/docs/deployment
+
+Hudi deploys with no long running servers or additional infrastructure cost to your data lake. 
+
+Hudi的部署不需要长期运行的服务器，也不会给数据湖带来额外的基础设施成本。
+
+test case from: https://hudi.apache.org/docs/quick-start-guide ,and some config have been modified.
+
+```scala
+// From the extracted directory run spark-shell with Hudi as
+// Note: --jars is unnecessary,because those jar file can be discovered by spark
+spark-shell \
+  --conf 'spark.serializer=org.apache.spark.serializer.KryoSerializer' \
+  --jars $SPARK_HOME/jars/hudi-spark3-bundle_2.12-0.10.0.jar,$SPARK_HOME/jars/spark-avro_2.12-3.0.0.jar
+
+// spark-shell
+import org.apache.hudi.QuickstartUtils._
+import scala.collection.JavaConversions._
+import org.apache.spark.sql.SaveMode._
+import org.apache.hudi.DataSourceReadOptions._
+import org.apache.hudi.DataSourceWriteOptions._
+import org.apache.hudi.config.HoodieWriteConfig._
+
+val tableName = "hudi_trips_cow"
+// local(file:// can not be reached,hdfs path should be added)
+// WARN: Timeline-server-based markers are not supported for HDFS
+val basePath = "hdfs://master:9000/tmp/hudi_trips_cow"
+val dataGen = new DataGenerator
+
+// Insert data in spark-shell
+val inserts = convertToStringList(dataGen.generateInserts(10))
+val df = spark.read.json(spark.sparkContext.parallelize(inserts, 2))
+df.write.format("hudi").
+  options(getQuickstartWriteConfigs).
+  option(PRECOMBINE_FIELD_OPT_KEY, "ts").
+  option(RECORDKEY_FIELD_OPT_KEY, "uuid").
+  option(PARTITIONPATH_FIELD_OPT_KEY, "partitionpath").
+  option(TABLE_NAME, tableName).
+  mode(Overwrite).
+  save(basePath)
+
+// spark-shell
+val tripsSnapshotDF = spark.
+  read.
+  format("hudi").
+  load(basePath)
+// load(basePath) use "/partitionKey=partitionValue" folder structure for Spark auto partition discovery
+tripsSnapshotDF.createOrReplaceTempView("hudi_trips_snapshot")
+
+spark.sql("select fare, begin_lon, begin_lat, ts from  hudi_trips_snapshot where fare > 20.0").show()
+spark.sql("select _hoodie_commit_time, _hoodie_record_key, _hoodie_partition_path, rider, driver, fare from  hudi_trips_snapshot").show()
+
+// Update data
+// This is similar to inserting new data. Generate updates to existing trips using the data generator, load into a DataFrame and write DataFrame into the hudi table.
+// spark-shell
+val updates = convertToStringList(dataGen.generateUpdates(10))
+val df = spark.read.json(spark.sparkContext.parallelize(updates, 2))
+df.write.format("hudi").
+  options(getQuickstartWriteConfigs).
+  option(PRECOMBINE_FIELD_OPT_KEY, "ts").
+  option(RECORDKEY_FIELD_OPT_KEY, "uuid").
+  option(PARTITIONPATH_FIELD_OPT_KEY, "partitionpath").
+  option(TABLE_NAME, tableName).
+  mode(Append).
+  save(basePath)
+// after update,get result again,and manually compare this result with last ones,and difference would show hudi work well 
+spark.sql("select fare, begin_lon, begin_lat, ts from  hudi_trips_snapshot where fare > 20.0").show()
+```
+
+
 
 ### Postgres
 
