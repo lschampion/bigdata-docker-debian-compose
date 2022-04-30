@@ -951,6 +951,8 @@ ThriftServer is deloyed on worker2. python (etc other APIs) may connect it for s
 
 ### Hudi
 
+hudi jar files should be compiled by yourself, because hudi jars should be builded completely accroding to your hadoop,spark,flink version. please clone [hudi](https://github.com/apache/hudi.git) in github, modify component versions in pom.xml and build it.
+
 https://hudi.apache.org/docs/deployment
 
 Hudi deploys with no long running servers or additional infrastructure cost to your data lake. 
