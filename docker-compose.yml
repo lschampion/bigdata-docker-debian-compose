@@ -95,8 +95,8 @@ services:
       - "zoo3:172.28.1.13"
       
   master:
-    image: lisacumt/hadoop-hive-hbase-spark-docker:1.1.6
-#    build: '../hadoop-hive-spark-docker'
+    image: lisacumt/hadoop-hive-hbase-spark-centos-docker:1.2.0
+    privileged: true
     hostname: master
     depends_on:
       - hivemetastore
@@ -181,8 +181,8 @@ services:
       - "zoo3:172.28.1.13"
 
   worker1:
-    image: lisacumt/hadoop-hive-hbase-spark-docker:1.1.6
-#    build: '../hadoop-hive-spark-docker'
+    image: lisacumt/hadoop-hive-hbase-spark-centos-docker:1.2.0
+    privileged: true
     hostname: worker1
     depends_on:
       - hivemetastore
@@ -233,8 +233,8 @@ services:
       - "zoo3:172.28.1.13"
 
   worker2:
-    image: lisacumt/hadoop-hive-hbase-spark-docker:1.1.6
-#    build: '../hadoop-hive-spark-docker'
+    image: lisacumt/hadoop-hive-hbase-spark-centos-docker:1.2.0
+    privileged: true
     hostname: worker2
     depends_on:
       - hivemetastore
@@ -285,9 +285,9 @@ services:
       - "zoo3:172.28.1.13"
 
   zeppelin:
-    image:  lisacumt/zeppelin-bigdata-docker:1.1.6
-#    build: '../zeppelin-bigdata-docker'
+    image: lisacumt/zeppelin-bigdata-centos-docker:1.2.0
     hostname: zeppelin
+    privileged: true
     depends_on:
       - master
       - worker1
