@@ -97,6 +97,7 @@ services:
   master:
     image: lisacumt/hadoop-hive-hbase-spark-centos-docker:1.2.0
     privileged: true
+    command: /usr/sbin/init
     hostname: master
     depends_on:
       - hivemetastore
@@ -183,6 +184,7 @@ services:
   worker1:
     image: lisacumt/hadoop-hive-hbase-spark-centos-docker:1.2.0
     privileged: true
+    command: /usr/sbin/init
     hostname: worker1
     depends_on:
       - hivemetastore
@@ -235,6 +237,7 @@ services:
   worker2:
     image: lisacumt/hadoop-hive-hbase-spark-centos-docker:1.2.0
     privileged: true
+    command: /usr/sbin/init
     hostname: worker2
     depends_on:
       - hivemetastore
