@@ -95,9 +95,8 @@ services:
       - "zoo3:172.28.1.13"
       
   master:
-    image: lisacumt/hadoop-hive-hbase-spark-centos-docker:1.2.0
+    image: lisacumt/hadoop-hive-hbase-spark-debian-docker:1.3.0
     privileged: true
-    command: /usr/sbin/init
     hostname: master
     depends_on:
       - hivemetastore
@@ -182,9 +181,8 @@ services:
       - "zoo3:172.28.1.13"
 
   worker1:
-    image: lisacumt/hadoop-hive-hbase-spark-centos-docker:1.2.0
+    image: lisacumt/hadoop-hive-hbase-spark-debian-docker:1.3.0
     privileged: true
-    command: /usr/sbin/init
     hostname: worker1
     depends_on:
       - hivemetastore
@@ -235,9 +233,8 @@ services:
       - "zoo3:172.28.1.13"
 
   worker2:
-    image: lisacumt/hadoop-hive-hbase-spark-centos-docker:1.2.0
+    image: lisacumt/hadoop-hive-hbase-spark-debian-docker:1.3.0
     privileged: true
-    command: /usr/sbin/init
     hostname: worker2
     depends_on:
       - hivemetastore
