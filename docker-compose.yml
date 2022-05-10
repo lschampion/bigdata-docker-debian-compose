@@ -285,7 +285,7 @@ services:
       - "zoo3:172.28.1.13"
 
   zeppelin:
-    image: lisacumt/zeppelin-bigdata-centos-docker:1.2.0
+    image: lisacumt/zeppelin-bigdata-debian-docker:1.3.0
     hostname: zeppelin
     privileged: true
     depends_on:
